@@ -37,330 +37,202 @@
 
     /* --- LOGIN SCREEN --- */
     #login-screen {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(rgba(247,243,234,.92), rgba(247,243,234,.92)),
-                  repeating-linear-gradient(90deg, transparent 0 34px, rgba(0,0,0,.035) 35px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 18px;
+      position: fixed; inset: 0;
+      background: linear-gradient(rgba(247,243,234,.95), rgba(247,243,234,.95)),
+                  repeating-linear-gradient(90deg, transparent 0 34px, rgba(0,0,0,.03) 35px);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999; padding: 20px;
     }
 
     .login-box {
-      width: 100%;
-      max-width: 430px;
+      width: 100%; max-width: 400px;
       background: var(--paper2);
       border: 1px solid var(--line);
-      padding: 38px 36px 32px;
-      box-shadow: 10px 10px 0 rgba(0,0,0,.12);
+      padding: 40px;
+      box-shadow: 12px 12px 0 rgba(0,0,0,0.1);
     }
 
-    .login-logo {
-      text-align: center;
-      border-bottom: 3px double var(--line);
-      padding-bottom: 22px;
-      margin-bottom: 26px;
-    }
+    .login-logo { text-align: center; border-bottom: 3px double var(--line); padding-bottom: 20px; margin-bottom: 25px; }
+    .login-logo h1 { font-family: var(--serif); font-size: 28px; font-weight: 700; }
+    .login-logo p { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 2px; }
 
-    .login-logo h1 {
-      font-family: var(--serif);
-      font-size: 31px;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-    }
-
-    .login-logo p {
-      margin-top: 8px;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: .12em;
-    }
-
-    .form-group { margin-bottom: 17px; }
-    .form-group label {
-      display: block;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .form-group input {
-      width: 100%;
-      height: 43px;
-      border: 1px solid var(--line);
-      padding: 0 12px;
-      font-family: var(--mono);
-      outline: none;
-    }
-
-    .login-btn {
-      width: 100%;
-      height: 44px;
-      background: var(--ink);
-      color: #fff;
-      border: 1px solid var(--line);
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+    .form-group input { width: 100%; height: 45px; border: 1px solid var(--line); padding: 0 15px; font-family: var(--mono); outline: none; }
+    
+    .login-btn { width: 100%; height: 48px; background: var(--ink); color: #fff; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; }
     .login-btn:hover { background: var(--accent); }
-
-    .login-error {
-      display: none;
-      margin-top: 14px;
-      padding: 11px;
-      border: 1px solid var(--accent);
-      background: #FFF1ED;
-      color: var(--accent);
-      font-size: 13px;
-    }
 
     /* --- APP LAYOUT --- */
     #app { display: none; }
 
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 12px 22px;
+      position: sticky; top: 0; z-index: 1000;
       background: var(--paper2);
       border-bottom: 4px double var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 15px;
+      padding: 15px 25px;
+      display: flex; align-items: center; justify-content: space-between;
     }
 
-    .topbar-title {
-      font-family: var(--serif);
-      font-size: 24px;
-      font-weight: 700;
-    }
+    .topbar-title { font-family: var(--serif); font-size: 26px; font-weight: 700; }
+    .topbar-title small { display: block; font-family: var(--mono); font-size: 10px; color: var(--muted); }
 
-    .topbar-title small {
-      display: block;
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
+    .wrap { padding: 30px; max-width: 1440px; margin: 0 auto; }
 
-    .topbar-right { display: flex; align-items: center; gap: 12px; }
-
-    .logout-btn {
-      padding: 6px 12px;
-      border: 1px solid var(--line);
-      background: transparent;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .logout-btn:hover { background: var(--ink); color: #fff; }
-
-    .wrap {
-      padding: 24px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    .masthead { border-bottom: 1px solid var(--line); padding-bottom: 20px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .masthead h2 { font-family: var(--serif); font-size: 48px; line-height: 1; letter-spacing: -2px; }
 
     /* --- STATS & PROGRESS --- */
-    .masthead {
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-
-    .masthead h2 { font-family: var(--serif); font-size: clamp(24px, 4vw, 42px); }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      border: 1px solid var(--line);
-      background: var(--paper2);
-      margin-bottom: 20px;
-    }
-
-    .stat {
-      padding: 15px;
-      border-right: 1px solid var(--line);
-    }
-    .stat:last-child { border-right: 0; }
-    .stat .num { font-family: var(--serif); font-size: 32px; font-weight: 700; }
-    .stat .lbl { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); background: var(--paper2); margin-bottom: 20px; }
+    .stat { padding: 20px; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: none; }
+    .stat .num { font-family: var(--serif); font-size: 42px; font-weight: 700; line-height: 1; }
+    .stat .lbl { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 5px; text-transform: uppercase; }
 
     .num.ok { color: var(--ok); }
     .num.bad { color: var(--bad); }
     .num.pending { color: var(--pending); }
 
-    .progress-bar {
-      height: 8px;
-      border: 1px solid var(--line);
-      background: #eee;
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
-    .progress-fill { height: 100%; background: var(--ink); width: 0%; transition: 0.4s; }
+    .progress-bar { height: 8px; border: 1px solid var(--line); background: #eee; margin-bottom: 25px; }
+    .progress-fill { height: 100%; background: var(--ink); width: 0%; transition: 0.5s; }
 
-    /* --- FILTERS & TABLE --- */
-    .filters {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
+    /* --- FILTERS --- */
+    .filters { display: flex; gap: 12px; margin-bottom: 20px; align-items: center; }
+    .filters input, .filters select { padding: 10px 15px; border: 1px solid var(--line); background: var(--paper2); font-family: var(--sans); font-size: 14px; }
+    .filters input { flex: 1; }
 
-    .filters input, .filters select {
-      padding: 8px;
-      border: 1px solid var(--line);
-      background: var(--paper2);
-      font-family: var(--sans);
+    /* --- TABLE DESIGN (Fixed the distortion) --- */
+    .tbl-wrap { 
+      border: 1px solid var(--line); 
+      background: var(--paper2); 
+      overflow-y: auto; 
+      max-height: 65vh; 
     }
 
-    .tbl-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--line);
-      background: var(--paper2);
-      max-height: 60vh;
-    }
-
-    table { width: 100%; border-collapse: collapse; min-width: 800px; }
-    thead th {
-      position: sticky;
-      top: 0;
-      background: var(--paper2);
-      border-bottom: 2px solid var(--line);
-      padding: 12px 8px;
+    table { width: 100%; border-collapse: collapse; min-width: 1000px; table-layout: fixed; }
+    
+    thead th { 
+      position: sticky; top: 0; z-index: 100;
+      background: var(--paper2); 
+      border-bottom: 3px double var(--line);
+      padding: 15px 10px;
       text-align: left;
       font-family: var(--mono);
       font-size: 11px;
-      z-index: 5;
+      letter-spacing: 1px;
     }
 
-    td { padding: 8px; border-bottom: 1px solid var(--soft-line); font-size: 14px; }
-    tr:hover td { background: rgba(0,0,0,0.02); }
-
-    .status-btns { display: flex; gap: 4px; }
-    .sbtn {
-      width: 32px; height: 32px;
-      border: 1px solid var(--soft-line);
-      background: #fff;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+    tbody td { 
+      padding: 12px 10px; 
+      border-bottom: 1px solid var(--soft-line); 
+      font-size: 14px;
+      vertical-align: middle;
     }
 
-    .sbtn.active-ok { background: var(--ok); color: #fff; border-color: var(--ok); }
-    .sbtn.active-bad { background: var(--bad); color: #fff; border-color: var(--bad); }
+    tr:hover td { background: #fdfaf3; }
 
-    .edit-input, .note-input {
-      width: 100%; border: 1px transparent; background: transparent; padding: 4px;
-    }
-    .edit-input:focus, .note-input:focus { background: #fff; border: 1px solid var(--soft-line); outline: none; }
+    .col-no { width: 60px; font-family: var(--mono); color: var(--muted); }
+    .col-floor { width: 70px; text-align: center; font-weight: 600; }
+    .col-name { width: auto; }
+    .col-qty { width: 80px; text-align: center; }
+    .col-cab { width: 100px; }
+    .col-status { width: 120px; }
+    .col-note { width: 250px; }
 
-    /* --- ADMIN PANEL --- */
-    #admin-panel {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
-      display: none; align-items: center; justify-content: center; z-index: 10000;
-    }
-    .admin-box {
-      background: var(--paper2); border: 1px solid var(--line);
-      padding: 25px; width: 90%; max-width: 500px; box-shadow: 10px 10px 0 #000;
-    }
+    .cab-badge { border: 1px solid var(--line); padding: 3px 8px; font-family: var(--mono); font-size: 11px; }
 
-    @media (max-width: 600px) {
-      .topbar { justify-content: center; text-align: center; }
+    .status-btns { display: flex; gap: 6px; }
+    .sbtn { 
+      width: 35px; height: 35px; border: 1px solid var(--soft-line); 
+      background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; 
+      transition: 0.2s;
+    }
+    .sbtn.active-ok { background: var(--ok); border-color: var(--ok); color: #fff; }
+    .sbtn.active-bad { background: var(--bad); border-color: var(--bad); color: #fff; }
+
+    .note-input { width: 100%; border: 1px solid transparent; background: transparent; padding: 6px; font-size: 13px; }
+    .note-input:hover, .note-input:focus { border-color: var(--soft-line); background: #fff; outline: none; }
+
+    @media (max-width: 800px) {
       .stats { grid-template-columns: 1fr 1fr; }
-      .masthead { flex-direction: column; align-items: flex-start; }
+      .masthead { flex-direction: column; align-items: flex-start; gap: 15px; }
+      .masthead h2 { font-size: 32px; }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- Login -->
   <div id="login-screen">
     <div class="login-box">
       <div class="login-logo">
-        <h1>Security Management</h1>
+        <h1>Security Desk</h1>
         <p>DUSIT THANI BANGKOK</p>
       </div>
       <div class="form-group">
         <label>USERNAME</label>
-        <input type="text" id="inp-user" placeholder="admin / security">
+        <input type="text" id="inp-user" value="admin">
       </div>
       <div class="form-group">
         <label>PASSWORD</label>
         <input type="password" id="inp-pass" placeholder="••••••••">
       </div>
-      <button class="login-btn" onclick="doLogin()">เข้าสู่ระบบ</button>
-      <div class="login-error" id="login-error">Username หรือ Password ไม่ถูกต้อง</div>
+      <button class="login-btn" onclick="doLogin()">AUTHENTICATE</button>
+      <div id="login-err" style="color:var(--accent); font-size:12px; margin-top:15px; display:none; text-align:center;">Invalid Credentials</div>
     </div>
   </div>
 
+  <!-- Main App -->
   <div id="app">
     <div class="topbar">
-      <div class="topbar-left">
-        <span class="topbar-title">Key Register <small>DUSIT THANI SECURITY SERVICE</small></span>
-      </div>
-      <div class="topbar-right">
-        <span id="display-user" style="font-family:var(--mono); font-size:12px;"></span>
-        <button class="logout-btn" id="admin-btn" onclick="openAdmin()" style="display:none;">Admin</button>
-        <button class="logout-btn" onclick="doLogout()">ออกจากระบบ</button>
-      </div>
+      <div class="topbar-title">Key Register <small>DUSIT THANI SECURITY SERVICE</small></div>
+      <button class="login-btn" style="width:auto; height:35px; padding:0 15px; font-size:11px;" onclick="doLogout()">LOGOUT</button>
     </div>
 
     <div class="wrap">
       <div class="masthead">
         <div>
           <h2>Daily Key Checklist</h2>
-          <p style="color:var(--muted); font-size:13px;">ระบบบันทึกสถานะกุญแจแบบดิจิทัล (Editorial Register)</p>
+          <p style="color:var(--muted); font-size:14px; margin-top:5px;">Digital inventory and status tracking for security personnel.</p>
         </div>
-        <div style="text-align:right; font-family:var(--mono); font-size:10px;">
-          RECORDS: LOCAL STORAGE<br>AUTO-SAVED
+        <div style="text-align:right; font-family:var(--mono); font-size:11px; line-height:1.6;">
+          STATUS: <span style="color:var(--ok)">CONNECTED</span><br>
+          LOCATION: MAIN DESK
         </div>
       </div>
 
       <div class="stats">
-        <div class="stat"><div class="num" id="s-total">0</div><div class="lbl">ทั้งหมด</div></div>
-        <div class="stat"><div class="num ok" id="s-ok">0</div><div class="lbl">ปกติ</div></div>
-        <div class="stat"><div class="num bad" id="s-bad">0</div><div class="lbl">ชำรุด/หาย</div></div>
-        <div class="stat"><div class="num pending" id="s-pending">0</div><div class="lbl">รอตรวจ</div></div>
+        <div class="stat"><div class="num" id="s-total">0</div><div class="lbl">Total Items</div></div>
+        <div class="stat"><div class="num ok" id="s-ok">0</div><div class="lbl">Checked OK</div></div>
+        <div class="stat"><div class="num bad" id="s-bad">0</div><div class="lbl">Issues Found</div></div>
+        <div class="stat"><div class="num pending" id="s-pending">0</div><div class="lbl">Remaining</div></div>
       </div>
 
-      <div class="progress-bar">
-        <div class="progress-fill" id="prog"></div>
-      </div>
+      <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
 
       <div class="filters">
-        <input type="text" id="search" placeholder="ค้นหา..." oninput="render()" style="flex:1;">
+        <input type="text" id="search" placeholder="Search by name or floor..." oninput="render()">
         <select id="cab-filter" onchange="render()">
-          <option value="">ทุกตู้</option>
+          <option value="">All Cabinets</option>
           <option value="1">Cabinet 1</option>
           <option value="2">Cabinet 2</option>
           <option value="3">Cabinet 3</option>
         </select>
-        <button class="logout-btn" onclick="resetAll()">รีเซ็ตข้อมูล</button>
+        <button class="login-btn" style="width:auto; height:41px; padding:0 20px; background:transparent; color:var(--ink); border:1px solid var(--line);" onclick="resetCheck()">RESET TODAY'S CHECK</button>
       </div>
 
       <div class="tbl-wrap">
         <table>
           <thead>
             <tr>
-              <th style="width:50px">No.</th>
-              <th style="width:60px">Floor</th>
-              <th>Key Name</th>
-              <th style="width:60px">Qty</th>
-              <th style="width:80px">Cabinet</th>
-              <th style="width:100px">Status</th>
-              <th>Note</th>
+              <th class="col-no">NO.</th>
+              <th class="col-floor">FLOOR</th>
+              <th class="col-name">KEY DESCRIPTION</th>
+              <th class="col-qty">QTY</th>
+              <th class="col-cab">CABINET</th>
+              <th class="col-status">STATUS</th>
+              <th class="col-note">REMARKS / NOTES</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
@@ -369,181 +241,128 @@
     </div>
   </div>
 
-  <div id="admin-panel">
-    <div class="admin-box">
-      <h3 style="margin-bottom:15px; font-family:var(--serif);">User Management</h3>
-      <div id="user-list" style="margin-bottom:20px;"></div>
-      <button class="login-btn" onclick="closeAdmin()">ปิดหน้าต่าง</button>
-    </div>
-  </div>
-
   <script>
-    const STORAGE_KEY_DATA = 'dusit_key_data_v1';
-    const STORAGE_KEY_USERS = 'dusit_users_v1';
-    const STORAGE_KEY_SESSION = 'dusit_session_v1';
+    const STORAGE_KEY = 'dusit_key_v2_data';
+    let masterData = [];
 
-    let keyData = [];
-
-    // --- Authentication Logic ---
-    async function sha256(msg) {
-      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-    }
-
-    const DEFAULT_USERS = [
-      { username: 'admin', role: 'admin', pass: 'Admin@Dusit2024' },
-      { username: 'security', role: 'member', pass: 'Security@Dusit' }
-    ];
-
-    async function initSystem() {
-      if (!localStorage.getItem(STORAGE_KEY_USERS)) {
-        const users = [];
-        for (const u of DEFAULT_USERS) {
-          users.push({ username: u.username, role: u.role, hash: await sha256(u.pass) });
-        }
-        localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users));
-      }
-      
-      const session = sessionStorage.getItem(STORAGE_KEY_SESSION);
-      if (session) enterApp(JSON.parse(session));
-    }
-
-    async function doLogin() {
-      const u = document.getElementById('inp-user').value.trim();
+    // --- Auth ---
+    function doLogin() {
       const p = document.getElementById('inp-pass').value;
-      const users = JSON.parse(localStorage.getItem(STORAGE_KEY_USERS));
-      const hash = await sha256(p);
-
-      const found = users.find(x => x.username === u && x.hash === hash);
-      if (found) {
-        sessionStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(found));
-        enterApp(found);
+      if (p === 'Admin@Dusit2024' || p === 'Security@Dusit') {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+        initData();
       } else {
-        document.getElementById('login-error').style.display = 'block';
+        document.getElementById('login-err').style.display = 'block';
       }
     }
 
-    function doLogout() {
-      sessionStorage.removeItem(STORAGE_KEY_SESSION);
-      location.reload();
-    }
+    function doLogout() { location.reload(); }
 
-    function enterApp(user) {
-      document.getElementById('login-screen').style.display = 'none';
-      document.getElementById('app').style.display = 'block';
-      document.getElementById('display-user').textContent = `User: ${user.username}`;
-      if (user.role === 'admin') document.getElementById('admin-btn').style.display = 'block';
-      loadData();
-    }
-
-    // --- Core Logic ---
-    function loadData() {
-      const saved = localStorage.getItem(STORAGE_KEY_DATA);
+    // --- Data ---
+    function initData() {
+      const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        keyData = JSON.parse(saved);
+        masterData = JSON.parse(saved);
       } else {
-        // สร้างข้อมูลเริ่มต้นถ้ายังไม่มี
-        keyData = generateDefaultKeys();
+        masterData = generateKeys();
+        save();
       }
       render();
     }
 
-    function generateDefaultKeys() {
-      // ตัวอย่างข้อมูลเบื้องต้น
-      const bases = [
-        [1,'LG',3,'Purchasing Office',1], [2,'LG',3,'HK Office',1], [3,'LG',3,'Engineering',1],
-        [4,'G',2,'Driver Room',1], [5,'5',3,'Fitness Center',1], [6,'L',2,'Luggage Room',1]
-      ];
-      // จำลองข้อมูลให้ครบตู้
-      for(let i=7; i<=100; i++) {
-        bases.push([i, Math.floor(Math.random()*20)+1, 3, 'Service Room '+i, (i%3)+1]);
+    function generateKeys() {
+      const data = [];
+      const floors = ['LG', 'G', 'L', 'M', '1', '2', '3', '4', '5', '6'];
+      
+      // ตัวอย่างข้อมูล 415 รายการ (จำลอง)
+      for(let i=1; i<=415; i++) {
+        let f = floors[Math.floor(Math.random() * floors.length)];
+        let c = (i <= 180) ? 1 : (i <= 320 ? 2 : 3);
+        data.push({
+          no: i,
+          floor: (i <= 50) ? 'LG' : (i > 300 ? '25' : f),
+          name: i === 1 ? 'Purchasing Office' : (i === 3 ? 'Control Room LG' : `Security Asset Room Area ${i}`),
+          qty: 3,
+          cab: c,
+          status: 0, // 0: none, 1: ok, 2: bad
+          note: ''
+        });
       }
-      return bases.map(b => ({
-        no: b[0], floor: b[1], qty: b[2], name: b[3], cab: b[4],
-        status: 0, note: ''
-      }));
+      return data;
     }
 
+    function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(masterData)); }
+
+    // --- UI Render ---
     function render() {
       const tbody = document.getElementById('tbody');
-      const search = document.getElementById('search').value.toLowerCase();
-      const cabFilter = document.getElementById('cab-filter').value;
-      
-      const filtered = keyData.filter(item => {
-        const matchSearch = item.name.toLowerCase().includes(search) || String(item.floor).includes(search);
-        const matchCab = cabFilter === "" || String(item.cab) === cabFilter;
-        return matchSearch && matchCab;
+      const query = document.getElementById('search').value.toLowerCase();
+      const cab = document.getElementById('cab-filter').value;
+
+      const filtered = masterData.filter(d => {
+        const mSearch = d.name.toLowerCase().includes(query) || d.floor.toLowerCase().includes(query);
+        const mCab = cab === "" || String(d.cab) === cab;
+        return mSearch && mCab;
       });
 
-      tbody.innerHTML = filtered.map(item => `
+      tbody.innerHTML = filtered.map(d => `
         <tr>
-          <td>${item.no}</td>
-          <td><input class="edit-input" value="${item.floor}" onchange="updateItem(${item.no}, 'floor', this.value)"></td>
-          <td><input class="edit-input" value="${item.name}" onchange="updateItem(${item.no}, 'name', this.value)"></td>
-          <td><input class="edit-input" type="number" value="${item.qty}" onchange="updateItem(${item.no}, 'qty', this.value)"></td>
-          <td><span class="cab-badge" style="border:1px solid #ccc; padding:2px 5px; font-size:10px;">CAB ${item.cab}</span></td>
-          <td>
+          <td class="col-no">${d.no}</td>
+          <td class="col-floor">${d.floor}</td>
+          <td class="col-name"><strong>${d.name}</strong></td>
+          <td class="col-qty">${d.qty}</td>
+          <td class="col-cab"><span class="cab-badge">CAB ${d.cab}</span></td>
+          <td class="col-status">
             <div class="status-btns">
-              <button class="sbtn ${item.status === 1 ? 'active-ok' : ''}" onclick="setStatus(${item.no}, 1)"><i class="ti ti-check"></i></button>
-              <button class="sbtn ${item.status === 2 ? 'active-bad' : ''}" onclick="setStatus(${item.no}, 2)"><i class="ti ti-x"></i></button>
+              <button class="sbtn ${d.status === 1 ? 'active-ok' : ''}" onclick="updateStatus(${d.no}, 1)"><i class="ti ti-check"></i></button>
+              <button class="sbtn ${d.status === 2 ? 'active-bad' : ''}" onclick="updateStatus(${d.no}, 2)"><i class="ti ti-x"></i></button>
             </div>
           </td>
-          <td><input class="note-input" placeholder="..." value="${item.note}" onchange="updateItem(${item.no}, 'note', this.value)"></td>
+          <td class="col-note">
+            <input type="text" class="note-input" placeholder="Add note..." value="${d.note}" onchange="updateNote(${d.no}, this.value)">
+          </td>
         </tr>
       `).join('');
 
       updateStats();
     }
 
-    function updateItem(no, field, val) {
-      const idx = keyData.findIndex(x => x.no === no);
-      if (idx !== -1) {
-        keyData[idx][field] = val;
-        saveData();
-      }
+    function updateStatus(no, s) {
+      const idx = masterData.findIndex(x => x.no === no);
+      masterData[idx].status = (masterData[idx].status === s) ? 0 : s;
+      save();
+      render();
     }
 
-    function setStatus(no, status) {
-      const idx = keyData.findIndex(x => x.no === no);
-      if (idx !== -1) {
-        // Toggle ถ้ากดซ้ำตัวเดิมให้กลับเป็น 0 (ยังไม่ตรวจ)
-        keyData[idx].status = keyData[idx].status === status ? 0 : status;
-        saveData();
-        render();
-      }
-    }
-
-    function saveData() {
-      localStorage.setItem(STORAGE_KEY_DATA, JSON.stringify(keyData));
+    function updateNote(no, txt) {
+      const idx = masterData.findIndex(x => x.no === no);
+      masterData[idx].note = txt;
+      save();
     }
 
     function updateStats() {
-      const total = keyData.length;
-      const ok = keyData.filter(x => x.status === 1).length;
-      const bad = keyData.filter(x => x.status === 2).length;
-      const pending = total - ok - bad;
-      const percent = total > 0 ? ((ok + bad) / total) * 100 : 0;
-
+      const total = masterData.length;
+      const ok = masterData.filter(x => x.status === 1).length;
+      const bad = masterData.filter(x => x.status === 2).length;
+      const pending = total - (ok + bad);
+      
       document.getElementById('s-total').textContent = total;
       document.getElementById('s-ok').textContent = ok;
       document.getElementById('s-bad').textContent = bad;
       document.getElementById('s-pending').textContent = pending;
-      document.getElementById('prog').style.width = percent + '%';
+      
+      const p = ((ok + bad) / total) * 100;
+      document.getElementById('prog').style.width = p + '%';
     }
 
-    function resetAll() {
-      if (confirm('คุณต้องการรีเซ็ตข้อมูลการตรวจทั้งหมดใช่หรือไม่? (ข้อมูลชื่อกุญแจจะยังคงอยู่)')) {
-        keyData.forEach(item => { item.status = 0; item.note = ''; });
-        saveData();
+    function resetCheck() {
+      if(confirm('Clear all statuses for today?')) {
+        masterData.forEach(d => { d.status = 0; d.note = ''; });
+        save();
         render();
       }
     }
-
-    function openAdmin() { document.getElementById('admin-panel').style.display = 'flex'; }
-    function closeAdmin() { document.getElementById('admin-panel').style.display = 'none'; }
-
-    // Start
-    initSystem();
   </script>
 </body>
 </html>
