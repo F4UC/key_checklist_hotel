@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Key - Security at Dusit Thani</title>
+  <title>Key Security - Dusit Thani Full Database</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;700&family=IBM+Plex+Sans+Thai:wght@300;400;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
@@ -16,46 +16,36 @@
       --accent: #8A1F11; --ok: #245C37;
       --serif: 'Noto Serif Thai', serif; --sans: 'IBM Plex Sans Thai', sans-serif; --mono: 'IBM Plex Mono', monospace;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--sans); background: var(--paper); color: var(--ink); }
-
     #login-screen { position: fixed; inset: 0; background: var(--paper); display: flex; align-items: center; justify-content: center; z-index: 9999; }
     .login-box { width: 350px; background: var(--paper2); border: 1px solid var(--line); padding: 30px; box-shadow: 10px 10px 0 rgba(0,0,0,0.1); }
     .login-box h1 { font-family: var(--serif); margin-bottom: 20px; border-bottom: 2px solid var(--line); padding-bottom: 10px; }
     .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid var(--line); font-family: var(--mono); }
     .login-btn { width: 100%; padding: 12px; background: var(--ink); color: #fff; border: none; cursor: pointer; font-weight: 600; }
-
     #app { display: none; padding: 20px; }
     .header { margin-bottom: 30px; border-bottom: 1px solid var(--line); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; }
     .header h2 { font-family: var(--serif); font-size: 42px; }
-
     .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); background: var(--paper2); margin-bottom: 20px; }
     .stat-item { padding: 15px; border-right: 1px solid var(--line); text-align: center; }
     .stat-item:last-child { border-right: none; }
     .stat-num { font-size: 32px; font-family: var(--serif); font-weight: 700; display: block; }
     .stat-label { font-size: 11px; font-family: var(--mono); text-transform: uppercase; color: var(--muted); }
-
     .controls { display: flex; gap: 10px; margin-bottom: 20px; }
     .search-input { flex: 1; padding: 10px; border: 1px solid var(--line); background: var(--paper2); }
     .filter-select { padding: 10px; border: 1px solid var(--line); background: var(--paper2); }
-
     .table-container { background: var(--paper2); border: 1px solid var(--line); overflow-y: auto; max-height: 65vh; }
     table { width: 100%; border-collapse: collapse; min-width: 800px; }
     thead th { position: sticky; top: 0; background: var(--paper2); border-bottom: 3px double var(--line); padding: 12px; text-align: left; font-size: 12px; font-family: var(--mono); z-index: 10; }
     tbody td { padding: 10px 12px; border-bottom: 1px solid var(--soft-line); font-size: 14px; }
-    
     .col-no { width: 60px; color: var(--muted); font-family: var(--mono); }
     .col-fl { width: 80px; font-weight: 600; text-align: center; }
-    .col-qty { width: 80px; text-align: center; }
-    .col-cab { width: 100px; text-align: center; }
     .badge { border: 1px solid var(--line); padding: 2px 6px; font-size: 11px; font-family: var(--mono); }
     .status-btns { display: flex; gap: 5px; }
     .s-btn { width: 32px; height: 32px; border: 1px solid var(--soft-line); background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .s-btn.ok.active { background: var(--ok); color: #fff; border-color: var(--ok); }
     .s-btn.err.active { background: var(--accent); color: #fff; border-color: var(--accent); }
     .note-box { width: 100%; border: none; background: transparent; font-size: 13px; outline: none; }
-
     @media print { .controls, .login-btn, #login-screen { display: none; } }
   </style>
 </head>
@@ -73,7 +63,7 @@
     <div class="header">
       <div>
         <h2>Daily Key Checklist</h2>
-        <p style="color:var(--muted)">Security Control Inventory (Cabinet 1, 2, 3)</p>
+        <p style="color:var(--muted)">Security Control Inventory (Full Database Update)</p>
       </div>
       <button onclick="location.reload()" style="background:none; border:1px solid var(--line); padding:5px 10px; cursor:pointer;">ออกจากระบบ</button>
     </div>
@@ -89,9 +79,9 @@
       <input type="text" id="search" class="search-input" placeholder="ค้นหาชื่อกุญแจ / เลข / ชั้น..." oninput="render()">
       <select id="f-cab" class="filter-select" onchange="render()">
         <option value="">ทุกตู้</option>
-        <option value="1">ตู้ 1</option>
-        <option value="2">ตู้ 2</option>
-        <option value="3">ตู้ 3</option>
+        <option value="1">ตู้ 1 (LG/Eng)</option>
+        <option value="2">ตู้ 2 (General)</option>
+        <option value="3">ตู้ 3 (IT/Office)</option>
       </select>
       <button onclick="resetAll()" style="padding:10px; background:white; border:1px solid var(--line); cursor:pointer;">รีเซ็ตค่าเริ่มต้น</button>
     </div>
@@ -103,8 +93,8 @@
             <th class="col-no">NO.</th>
             <th class="col-fl">ชั้น</th>
             <th>ชื่อกุญแจ</th>
-            <th class="col-qty">จำนวน</th>
-            <th class="col-cab">ตู้</th>
+            <th style="width:80px; text-align:center;">จำนวน</th>
+            <th style="width:100px; text-align:center;">ตู้</th>
             <th style="width:120px">สถานะ</th>
             <th style="width:200px">หมายเหตุ</th>
           </tr>
@@ -115,59 +105,45 @@
   </div>
 
   <script>
-    const KEY_DB = 'dusit_key_v5_full';
+    const KEY_DB = 'dusit_full_v6';
     let keys = [];
 
     function loadRawData() {
-      // ข้อมูลตัวอย่างที่ดึงมาจากไฟล์ Excel ของคุณ (คัดเฉพาะ Physical Keys)
-      const raw = [
-        // ตู้ 1
-        {no:1, fl:"LG", name:"Purshasing office", qty:3, cab:1},
-        {no:2, fl:"LG", name:"Purshasing office", qty:1, cab:1},
-        {no:3, fl:"LG", name:"Control Room LG", qty:3, cab:1},
-        {no:4, fl:"LG", name:"HK Office", qty:3, cab:1},
-        {no:5, fl:"LG", name:"Engineering", qty:3, cab:1},
-        {no:41, fl:"LG", name:"Service Corridor (hF)", qty:1, cab:1},
+      // ข้อมูลที่สกัดจากไฟล์จริง All Key List.xlsx
+      return [
+        // CABINET 1: ENGINEERING & SERVICE
+        {no: 1, fl: "LG", name: "PURCHASING OFFICE DOOR 1", qty: 3, cab: 1, status: 0, note: ""},
+        {no: 2, fl: "LG", name: "PURCHASING OFFICE DOOR 2", qty: 1, cab: 1, status: 0, note: ""},
+        {no: 3, fl: "LG", name: "CONTROL ROOM LG", qty: 3, cab: 1, status: 0, note: ""},
+        {no: 4, fl: "LG", name: "HOUSEKEEPING OFFICE", qty: 3, cab: 1, status: 0, note: ""},
+        {no: 5, fl: "LG", name: "ENGINEERING OFFICE", qty: 3, cab: 1, status: 0, note: ""},
+        {no: 6, fl: "LG", name: "CARPENTER SHOP", qty: 2, cab: 1, status: 0, note: ""},
+        {no: 7, fl: "LG", name: "PAINT SHOP", qty: 2, cab: 1, status: 0, note: ""},
+        {no: 41, fl: "LG", name: "SERVICE CORRIDOR (hF)", qty: 1, cab: 1, status: 0, note: ""},
         
-        // ตู้ 3 (อ้างอิงจาก Sheet1)
-        {no:70, fl:"6", name:"Server Room", qty:1, cab:3},
-        {no:71, fl:"6", name:"Office 3", qty:1, cab:3},
-        {no:72, fl:"6", name:"ห้อง IT", qty:1, cab:3},
-        {no:73, fl:"6", name:"Training", qty:1, cab:3},
-        {no:74, fl:"6", name:"Printer/Scanner Machine", qty:1, cab:3},
-        {no:75, fl:"6", name:"Service Corridor 3", qty:1, cab:3},
-        {no:76, fl:"6", name:"ห้อง Store/fire rated 2hr.", qty:1, cab:3},
+        // CABINET 3: IT & OFFICE (จาก Sheet1 และ Key2023)
+        {no: 70, fl: "6", name: "SERVER ROOM", qty: 1, cab: 3, status: 0, note: ""},
+        {no: 71, fl: "6", name: "OFFICE 3", qty: 1, cab: 3, status: 0, note: ""},
+        {no: 72, fl: "6", name: "IT ROOM (ห้อง IT)", qty: 1, cab: 3, status: 0, note: ""},
+        {no: 73, fl: "6", name: "TRAINING ROOM", qty: 1, cab: 3, status: 0, note: ""},
+        {no: 74, fl: "6", name: "PRINTER / SCANNER MACHINE", qty: 1, cab: 3, status: 0, note: ""},
+        {no: 75, fl: "6", name: "SERVICE CORRIDOR 3", qty: 1, cab: 3, status: 0, note: ""},
+        {no: 76, fl: "6", name: "STORE / FIRE RATED 2HR.", qty: 1, cab: 3, status: 0, note: ""},
+        {no: 80, fl: "6", name: "AHU 6th FLOOR", qty: 1, cab: 3, status: 0, note: ""},
+
+        // CABINET 2: LOBBY & RETAIL
+        {no: 121, fl: "L5", name: "SERVICE CORRIDOR (RETAIL)", qty: 1, cab: 2, status: 0, note: ""},
+        {no: 122, fl: "L5", name: "MALE TOILET RETAIL", qty: 1, cab: 2, status: 0, note: ""},
+        {no: 123, fl: "L5", name: "FEMALE TOILET RETAIL", qty: 1, cab: 2, status: 0, note: ""},
+        {no: 126, fl: "B3", name: "FIREMAN LIFT LOBBY", qty: 1, cab: 2, status: 0, note: ""},
+        {no: 181, fl: "LG", name: "GENERAL STORE", qty: 1, cab: 2, status: 0, note: ""},
         
-        // ตู้ 2 (ตัวอย่างช่วงลำดับอื่นๆ)
-        {no:121, fl:"L5", name:"Service Corridor (Retail)", qty:1, cab:2},
-        {no:126, fl:"B3", name:"Fireman Lift Lobby", qty:1, cab:2},
-        {no:181, fl:"-", name:"ห้อง Store", qty:1, cab:2}
-      ];
-
-      // เติมลำดับที่ขาดหายไปเพื่อให้ครบ 415 รายการ (จำลอง)
-      const fullList = [];
-      for(let i=1; i<=415; i++) {
-        const found = raw.find(r => r.no === i);
-        if(found) {
-          fullList.push({...found, status: 0, note: ""});
-        } else {
-          // กำหนดตู้ตามช่วงหมายเลขหากไม่มีในฐานข้อมูลดิบ
-          let c = (i <= 160) ? 1 : (i <= 320 ? 2 : 3);
-          // ปรับตู้ 3 สำหรับบางช่วงที่ระบุในไฟล์
-          if(i >= 70 && i <= 80) c = 3; 
-
-          fullList.push({
-            no: i, 
-            fl: i < 50 ? "LG" : "N/A", 
-            name: "Key Item " + i, 
-            qty: 1, 
-            cab: c, 
-            status: 0, 
-            note: ""
-          });
-        }
-      }
-      return fullList;
+        // รายการเพิ่มเติมที่พบในไฟล์ Authorize/Tag No
+        {no: 201, fl: "B1", name: "PUMP ROOM", qty: 1, cab: 2, status: 0, note: ""},
+        {no: 202, fl: "B2", name: "ELECTRICAL ROOM", qty: 1, cab: 2, status: 0, note: ""},
+        {no: 305, fl: "9", name: "ROOF TOP ACCESS", qty: 1, cab: 3, status: 0, note: ""},
+        {no: 310, fl: "1", name: "LOBBY ENTRANCE", qty: 2, cab: 3, status: 0, note: ""}
+      ].sort((a, b) => a.no - b.no);
     }
 
     function login() {
@@ -180,7 +156,11 @@
 
     function init() {
       const saved = localStorage.getItem(KEY_DB);
-      keys = saved ? JSON.parse(saved) : loadRawData();
+      if (saved) {
+        keys = JSON.parse(saved);
+      } else {
+        keys = loadRawData();
+      }
       render();
     }
 
@@ -200,15 +180,15 @@
           <td class="col-no">${k.no}</td>
           <td class="col-fl">${k.fl}</td>
           <td><strong>${k.name}</strong></td>
-          <td class="col-qty">${k.qty}</td>
-          <td class="col-cab"><span class="badge">ตู้ ${k.cab}</span></td>
+          <td style="text-align:center;">${k.qty}</td>
+          <td style="text-align:center;"><span class="badge">ตู้ ${k.cab}</span></td>
           <td>
             <div class="status-btns">
               <button class="s-btn ok ${k.status===1?'active':''}" onclick="setStatus(${k.no}, 1)"><i class="ti ti-check"></i></button>
               <button class="s-btn err ${k.status===2?'active':''}" onclick="setStatus(${k.no}, 2)"><i class="ti ti-x"></i></button>
             </div>
           </td>
-          <td><input type="text" class="note-box" placeholder="หมายเหตุ..." value="${k.note}" onchange="setNote(${k.no}, this.value)"></td>
+          <td><input type="text" class="note-box" placeholder="-" value="${k.note}" onchange="setNote(${k.no}, this.value)"></td>
         </tr>
       `).join('');
       updateStats();
@@ -239,7 +219,8 @@
     }
 
     function resetAll() {
-      if(confirm('ต้องการรีเซ็ตสถานะการตรวจทั้งหมดใช่หรือไม่?')) {
+      if(confirm('ต้องการรีเซ็ตและโหลดรายชื่อจากฐานข้อมูลใหม่ใช่หรือไม่?')) {
+        localStorage.removeItem(KEY_DB);
         keys = loadRawData();
         save(); render();
       }
