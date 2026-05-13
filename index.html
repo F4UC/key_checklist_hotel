@@ -32,14 +32,15 @@
       font-family: var(--sans);
       background: var(--paper);
       color: var(--ink);
+      line-height: 1.5;
     }
 
+    /* --- LOGIN SCREEN --- */
     #login-screen {
       position: fixed;
       inset: 0;
-      background:
-        linear-gradient(rgba(247,243,234,.92), rgba(247,243,234,.92)),
-        repeating-linear-gradient(90deg, transparent 0 34px, rgba(0,0,0,.035) 35px);
+      background: linear-gradient(rgba(247,243,234,.92), rgba(247,243,234,.92)),
+                  repeating-linear-gradient(90deg, transparent 0 34px, rgba(0,0,0,.035) 35px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -63,14 +64,11 @@
       margin-bottom: 26px;
     }
 
-    .login-logo .icon-ring { display: none; }
-
     .login-logo h1 {
       font-family: var(--serif);
       font-size: 31px;
       font-weight: 700;
       letter-spacing: -0.04em;
-      color: var(--ink);
       line-height: 1.1;
     }
 
@@ -83,40 +81,32 @@
     }
 
     .form-group { margin-bottom: 17px; }
-
     .form-group label {
       display: block;
       font-family: var(--mono);
       font-size: 11px;
       color: var(--muted);
       margin-bottom: 6px;
-      letter-spacing: .08em;
     }
 
     .form-group input {
       width: 100%;
       height: 43px;
       border: 1px solid var(--line);
-      background: #fff;
-      color: var(--ink);
       padding: 0 12px;
       font-family: var(--mono);
-      font-size: 14px;
       outline: none;
     }
-
-    .form-group input:focus { box-shadow: inset 0 -3px 0 rgba(138,31,17,.25); }
 
     .login-btn {
       width: 100%;
       height: 44px;
-      margin-top: 10px;
-      border: 1px solid var(--line);
       background: var(--ink);
       color: #fff;
-      font-family: var(--sans);
+      border: 1px solid var(--line);
       font-weight: 600;
       cursor: pointer;
+      transition: 0.2s;
     }
 
     .login-btn:hover { background: var(--accent); }
@@ -124,575 +114,206 @@
     .login-error {
       display: none;
       margin-top: 14px;
-      padding: 11px 12px;
+      padding: 11px;
       border: 1px solid var(--accent);
       background: #FFF1ED;
       color: var(--accent);
       font-size: 13px;
     }
 
-    .login-footer {
-      text-align: center;
-      margin-top: 24px;
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: .15em;
-    }
-
-    #app {
-      display: none;
-      background: var(--paper);
-      min-height: 100vh;
-    }
+    /* --- APP LAYOUT --- */
+    #app { display: none; }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 100;
-      min-height: 78px;
-      padding: 10px 22px 8px;
+      z-index: 1000;
+      padding: 12px 22px;
       background: var(--paper2);
       border-bottom: 4px double var(--line);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
     }
-
-    .topbar-left {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-    }
-
-    .topbar-left i { display: none; }
 
     .topbar-title {
       font-family: var(--serif);
-      font-size: 30px;
+      font-size: 24px;
       font-weight: 700;
-      letter-spacing: -0.05em;
-      color: var(--ink);
     }
 
-    .topbar-title::after {
-      content: " / Dusit Thani Security Key Register";
+    .topbar-title small {
       display: block;
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 400;
-      letter-spacing: .08em;
       color: var(--muted);
-      margin-top: 4px;
+      letter-spacing: 0.05em;
     }
 
-    .topbar-badge {
-      border: 1px solid var(--line);
-      color: var(--ink);
-      background: transparent;
-      font-family: var(--mono);
-      font-size: 10px;
-      padding: 2px 7px;
-    }
-
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .user-chip {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-    }
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
 
     .logout-btn {
-      height: 30px;
-      padding: 0 11px;
+      padding: 6px 12px;
       border: 1px solid var(--line);
       background: transparent;
-      color: var(--ink);
-      font-family: var(--sans);
+      cursor: pointer;
       font-size: 12px;
-      cursor: pointer;
     }
 
-    .logout-btn:hover {
-      background: var(--ink);
-      color: #fff;
-    }
-
-    #admin-panel {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(17,17,17,.55);
-      z-index: 9998;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-    }
-
-    .admin-box {
-      width: 100%;
-      max-width: 500px;
-      max-height: 82vh;
-      overflow-y: auto;
-      background: var(--paper2);
-      border: 1px solid var(--line);
-      padding: 28px;
-      box-shadow: 10px 10px 0 rgba(0,0,0,.2);
-    }
-
-    .admin-box h3 {
-      font-family: var(--serif);
-      font-size: 24px;
-      border-bottom: 3px double var(--line);
-      padding-bottom: 12px;
-      margin-bottom: 18px;
-    }
-
-    .user-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
-    .user-item {
-      border: 1px solid var(--soft-line);
-      background: #fff;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .uname { font-family: var(--mono); }
-    .urole { font-size: 11px; color: var(--muted); }
-
-    .del-btn {
-      width: 29px;
-      height: 29px;
-      border: 1px solid var(--accent);
-      background: #fff;
-      color: var(--accent);
-      cursor: pointer;
-    }
-
-    .add-form { display: flex; flex-direction: column; gap: 10px; }
-    .add-form-row { display: flex; gap: 8px; }
-
-    .add-form input,
-    .add-form select {
-      flex: 1;
-      height: 38px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--ink);
-      padding: 0 10px;
-      font-family: var(--mono);
-    }
-
-    .add-user-btn,
-    .admin-close-btn {
-      height: 38px;
-      border: 1px solid var(--line);
-      background: var(--ink);
-      color: #fff;
-      padding: 0 14px;
-      cursor: pointer;
-    }
-
-    .admin-close-btn {
-      width: 100%;
-      margin-top: 16px;
-      background: transparent;
-      color: var(--ink);
-    }
-
-    .admin-msg {
-      font-size: 12px;
-      color: var(--ok);
-    }
+    .logout-btn:hover { background: var(--ink); color: #fff; }
 
     .wrap {
-      padding: 22px;
-      max-width: 1440px;
+      padding: 24px;
+      max-width: 1400px;
       margin: 0 auto;
-      background: var(--paper);
-      min-height: calc(100vh - 78px);
     }
 
+    /* --- STATS & PROGRESS --- */
     .masthead {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 14px;
-      align-items: end;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       border-bottom: 1px solid var(--line);
-      padding-bottom: 12px;
+      padding-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
     }
 
-    .masthead h2 {
-      font-family: var(--serif);
-      font-size: clamp(30px, 5vw, 58px);
-      line-height: 1;
-      letter-spacing: -0.06em;
-      font-weight: 700;
-    }
-
-    .masthead p {
-      color: var(--muted);
-      font-size: 13px;
-      max-width: 620px;
-      margin-top: 8px;
-    }
-
-    .edition {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
-      text-align: right;
-      line-height: 1.6;
-    }
+    .masthead h2 { font-family: var(--serif); font-size: clamp(24px, 4vw, 42px); }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       border: 1px solid var(--line);
       background: var(--paper2);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .stat {
-      padding: 16px 14px;
-      text-align: left;
+      padding: 15px;
       border-right: 1px solid var(--line);
     }
-
     .stat:last-child { border-right: 0; }
-
-    .stat .num {
-      font-family: var(--serif);
-      font-size: 38px;
-      line-height: 1;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-    }
-
-    .stat .lbl {
-      margin-top: 7px;
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: .08em;
-    }
+    .stat .num { font-family: var(--serif); font-size: 32px; font-weight: 700; }
+    .stat .lbl { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; }
 
     .num.ok { color: var(--ok); }
     .num.bad { color: var(--bad); }
     .num.pending { color: var(--pending); }
 
     .progress-bar {
-      height: 7px;
+      height: 8px;
       border: 1px solid var(--line);
-      background: var(--paper2);
-      margin-bottom: 14px;
+      background: #eee;
+      margin-bottom: 20px;
+      overflow: hidden;
     }
+    .progress-fill { height: 100%; background: var(--ink); width: 0%; transition: 0.4s; }
 
-    .progress-fill {
-      height: 100%;
-      background: var(--ink);
-      transition: width .25s;
-    }
-
+    /* --- FILTERS & TABLE --- */
     .filters {
       display: flex;
-      gap: 8px;
+      gap: 10px;
+      margin-bottom: 15px;
       flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 16px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 10px 0;
     }
 
-    .filters input,
-    .filters select {
-      height: 34px;
-      border: 1px solid var(--soft-line);
-      background: var(--paper2);
-      color: var(--ink);
-      padding: 0 10px;
-      font-family: var(--sans);
-      font-size: 13px;
-    }
-
-    .filters input {
-      flex: 1;
-      min-width: 190px;
-    }
-
-    .reset-btn {
-      height: 34px;
+    .filters input, .filters select {
+      padding: 8px;
       border: 1px solid var(--line);
-      background: transparent;
-      color: var(--ink);
-      padding: 0 12px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .reset-btn:hover {
-      background: var(--ink);
-      color: #fff;
-    }
-
-    .saved-msg {
-      margin-left: auto;
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--muted);
+      background: var(--paper2);
+      font-family: var(--sans);
     }
 
     .tbl-wrap {
       overflow-x: auto;
       border: 1px solid var(--line);
       background: var(--paper2);
+      max-height: 60vh;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
+    table { width: 100%; border-collapse: collapse; min-width: 800px; }
     thead th {
       position: sticky;
-      top: 78px;
-      z-index: 10;
+      top: 0;
       background: var(--paper2);
-      border-bottom: 3px double var(--line);
-      padding: 9px 8px;
+      border-bottom: 2px solid var(--line);
+      padding: 12px 8px;
       text-align: left;
       font-family: var(--mono);
-      font-size: 10px;
-      color: var(--ink);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    td {
-      padding: 7px 8px;
-      border-bottom: 1px solid var(--soft-line);
-      vertical-align: middle;
-    }
-
-    tr:hover td { background: #F2EBDD; }
-
-    .row-ok td:first-child { box-shadow: inset 4px 0 0 var(--ok); }
-    .row-bad td:first-child { box-shadow: inset 4px 0 0 var(--bad); }
-
-    .fl {
-      font-family: var(--mono);
       font-size: 11px;
-      color: var(--muted);
+      z-index: 5;
     }
 
-    .cab-badge {
-      display: inline-block;
-      border: 1px solid var(--line);
-      background: transparent !important;
-      color: var(--ink) !important;
-      font-family: var(--mono);
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 0;
-      white-space: nowrap;
-    }
+    td { padding: 8px; border-bottom: 1px solid var(--soft-line); font-size: 14px; }
+    tr:hover td { background: rgba(0,0,0,0.02); }
 
-    .status-btns {
-      display: flex;
-      gap: 5px;
-    }
-
+    .status-btns { display: flex; gap: 4px; }
     .sbtn {
-      width: 30px;
-      height: 26px;
+      width: 32px; height: 32px;
       border: 1px solid var(--soft-line);
       background: #fff;
-      color: var(--ink);
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    .sbtn:hover { border-color: var(--line); }
+    .sbtn.active-ok { background: var(--ok); color: #fff; border-color: var(--ok); }
+    .sbtn.active-bad { background: var(--bad); color: #fff; border-color: var(--bad); }
 
-    .sbtn.active-ok {
-      background: var(--ok);
-      border-color: var(--ok);
-      color: #fff;
+    .edit-input, .note-input {
+      width: 100%; border: 1px transparent; background: transparent; padding: 4px;
+    }
+    .edit-input:focus, .note-input:focus { background: #fff; border: 1px solid var(--soft-line); outline: none; }
+
+    /* --- ADMIN PANEL --- */
+    #admin-panel {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      display: none; align-items: center; justify-content: center; z-index: 10000;
+    }
+    .admin-box {
+      background: var(--paper2); border: 1px solid var(--line);
+      padding: 25px; width: 90%; max-width: 500px; box-shadow: 10px 10px 0 #000;
     }
 
-    .sbtn.active-bad {
-      background: var(--bad);
-      border-color: var(--bad);
-      color: #fff;
-    }
-
-    .edit-input,
-    .note-input {
-      width: 100%;
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 13px;
-      padding: 4px 6px;
-    }
-
-    .edit-input:hover,
-    .note-input:hover,
-    .edit-input:focus,
-    .note-input:focus {
-      outline: none;
-      border-color: var(--soft-line);
-      background: #fff;
-    }
-
-    .edit-input.num-input {
-      width: 52px;
-      text-align: center;
-      font-family: var(--mono);
-    }
-
-    .empty {
-      padding: 32px;
-      text-align: center;
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: 12px;
-    }
-
-    @media (max-width: 760px) {
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .topbar-title { font-size: 25px; }
-
-      .topbar-right {
-        width: 100%;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-
-      .wrap { padding: 14px; }
-
-      .masthead {
-        grid-template-columns: 1fr;
-      }
-
-      .edition { text-align: left; }
-
-      .stats { grid-template-columns: repeat(2, 1fr); }
-
-      .stat:nth-child(2) { border-right: 0; }
-
-      .stat:nth-child(1),
-      .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
-
-      thead th { top: 126px; }
+    @media (max-width: 600px) {
+      .topbar { justify-content: center; text-align: center; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .masthead { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 
 <body>
+
   <div id="login-screen">
     <div class="login-box">
       <div class="login-logo">
-        <div class="icon-ring"><i class="ti ti-shield-lock"></i></div>
         <h1>Security Management</h1>
         <p>DUSIT THANI BANGKOK</p>
       </div>
-
       <div class="form-group">
         <label>USERNAME</label>
-        <input type="text" id="inp-user" placeholder="กรอก username" autocomplete="username" spellcheck="false">
+        <input type="text" id="inp-user" placeholder="admin / security">
       </div>
-
       <div class="form-group">
         <label>PASSWORD</label>
-        <input type="password" id="inp-pass" placeholder="กรอก password" autocomplete="current-password">
+        <input type="password" id="inp-pass" placeholder="••••••••">
       </div>
-
-      <button class="login-btn" onclick="doLogin()">
-        <i class="ti ti-login" style="margin-right:6px"></i> เข้าสู่ระบบ
-      </button>
-
-      <div class="login-error" id="login-error">
-        <i class="ti ti-alert-circle" style="margin-right:6px"></i>
-        <span id="login-error-msg">Username หรือ Password ไม่ถูกต้อง</span>
-      </div>
-
-      <div class="login-footer">AUTHORIZED PERSONNEL ONLY</div>
-    </div>
-  </div>
-
-  <div id="admin-panel">
-    <div class="admin-box">
-      <h3><i class="ti ti-users"></i> จัดการสมาชิก</h3>
-      <div class="user-list" id="user-list"></div>
-
-      <div class="add-form">
-        <div class="add-form-row">
-          <input type="text" id="new-user" placeholder="Username" spellcheck="false">
-          <input type="password" id="new-pass" placeholder="Password">
-        </div>
-        <div class="add-form-row">
-          <select id="new-role">
-            <option value="member">Member</option>
-            <option value="admin">Admin</option>
-          </select>
-          <button class="add-user-btn" onclick="addUser()">
-            <i class="ti ti-user-plus" style="margin-right:5px"></i>เพิ่มสมาชิก
-          </button>
-        </div>
-        <div class="admin-msg" id="admin-msg"></div>
-      </div>
-
-      <button class="admin-close-btn" onclick="closeAdmin()">ปิด</button>
+      <button class="login-btn" onclick="doLogin()">เข้าสู่ระบบ</button>
+      <div class="login-error" id="login-error">Username หรือ Password ไม่ถูกต้อง</div>
     </div>
   </div>
 
   <div id="app">
     <div class="topbar">
       <div class="topbar-left">
-        <i class="ti ti-key"></i>
-        <span class="topbar-title">Key Register</span>
-        <span class="topbar-badge">PRIVATE</span>
+        <span class="topbar-title">Key Register <small>DUSIT THANI SECURITY SERVICE</small></span>
       </div>
-
       <div class="topbar-right">
-        <div class="user-chip">
-          <i class="ti ti-user-circle"></i>
-          <span id="display-user">—</span>
-        </div>
-
-        <button class="logout-btn" id="admin-btn" onclick="openAdmin()" style="display:none;">
-          <i class="ti ti-settings"></i> Admin
-        </button>
-
-        <button class="logout-btn" onclick="doLogout()">
-          <i class="ti ti-logout"></i> ออกจากระบบ
-        </button>
+        <span id="display-user" style="font-family:var(--mono); font-size:12px;"></span>
+        <button class="logout-btn" id="admin-btn" onclick="openAdmin()" style="display:none;">Admin</button>
+        <button class="logout-btn" onclick="doLogout()">ออกจากระบบ</button>
       </div>
     </div>
 
@@ -700,542 +321,229 @@
       <div class="masthead">
         <div>
           <h2>Daily Key Checklist</h2>
-          <p>ระบบบันทึกการตรวจสอบกุญแจประจำวัน จัดหน้าแบบ editorial register เน้นอ่านง่าย ดูเป็นเอกสารจริงจัง และยังคงแก้ไขชื่อกุญแจ จำนวน สถานะ และหมายเหตุได้เหมือนเดิม</p>
+          <p style="color:var(--muted); font-size:13px;">ระบบบันทึกสถานะกุญแจแบบดิจิทัล (Editorial Register)</p>
         </div>
-        <div class="edition">
-          SECURITY DESK<br>
-          LOCAL RECORD / BROWSER STORAGE
+        <div style="text-align:right; font-family:var(--mono); font-size:10px;">
+          RECORDS: LOCAL STORAGE<br>AUTO-SAVED
         </div>
       </div>
 
       <div class="stats">
         <div class="stat"><div class="num" id="s-total">0</div><div class="lbl">ทั้งหมด</div></div>
-        <div class="stat"><div class="num ok" id="s-ok">0</div><div class="lbl">ใช้ได้</div></div>
-        <div class="stat"><div class="num bad" id="s-bad">0</div><div class="lbl">ใช้ไม่ได้</div></div>
-        <div class="stat"><div class="num pending" id="s-pending">0</div><div class="lbl">ยังไม่ตรวจ</div></div>
+        <div class="stat"><div class="num ok" id="s-ok">0</div><div class="lbl">ปกติ</div></div>
+        <div class="stat"><div class="num bad" id="s-bad">0</div><div class="lbl">ชำรุด/หาย</div></div>
+        <div class="stat"><div class="num pending" id="s-pending">0</div><div class="lbl">รอตรวจ</div></div>
       </div>
 
       <div class="progress-bar">
-        <div class="progress-fill" id="prog" style="width:0%"></div>
+        <div class="progress-fill" id="prog"></div>
       </div>
 
       <div class="filters">
-        <input id="search" type="text" placeholder="ค้นหาชื่อกุญแจ / เลข / ชั้น..." oninput="render()">
-
+        <input type="text" id="search" placeholder="ค้นหา..." oninput="render()" style="flex:1;">
         <select id="cab-filter" onchange="render()">
           <option value="">ทุกตู้</option>
           <option value="1">Cabinet 1</option>
           <option value="2">Cabinet 2</option>
           <option value="3">Cabinet 3</option>
         </select>
-
-        <select id="status-filter" onchange="render()">
-          <option value="">ทุกสถานะ</option>
-          <option value="0">ยังไม่ตรวจ</option>
-          <option value="1">ใช้ได้</option>
-          <option value="2">ใช้ไม่ได้</option>
-        </select>
-
-        <button class="reset-btn" onclick="resetAll()">
-          <i class="ti ti-refresh"></i> รีเซ็ตค่าเริ่มต้น
-        </button>
-
-        <span class="saved-msg" id="saved-msg"></span>
+        <button class="logout-btn" onclick="resetAll()">รีเซ็ตข้อมูล</button>
       </div>
 
       <div class="tbl-wrap">
         <table>
           <thead>
             <tr>
-              <th style="width:44px">No.</th>
-              <th style="width:58px">ชั้น</th>
-              <th style="min-width:220px">ชื่อกุญแจ</th>
-              <th style="width:74px; text-align:center;">จำนวน</th>
-              <th style="width:78px">ตู้</th>
-              <th style="width:90px">สถานะ</th>
-              <th style="min-width:170px">หมายเหตุ</th>
+              <th style="width:50px">No.</th>
+              <th style="width:60px">Floor</th>
+              <th>Key Name</th>
+              <th style="width:60px">Qty</th>
+              <th style="width:80px">Cabinet</th>
+              <th style="width:100px">Status</th>
+              <th>Note</th>
             </tr>
           </thead>
           <tbody id="tbody"></tbody>
         </table>
       </div>
+    </div>
+  </div>
 
-      <div id="empty-msg" class="empty" style="display:none">ไม่พบรายการที่ค้นหา</div>
+  <div id="admin-panel">
+    <div class="admin-box">
+      <h3 style="margin-bottom:15px; font-family:var(--serif);">User Management</h3>
+      <div id="user-list" style="margin-bottom:20px;"></div>
+      <button class="login-btn" onclick="closeAdmin()">ปิดหน้าต่าง</button>
     </div>
   </div>
 
   <script>
-    const STORAGE_KEY_USERS = 'dusit_sec_users_v1';
-    const STORAGE_KEY_SESSION = 'dusit_sec_session';
-    const STORAGE_KEY_DATA = 'dusit_sec_checklist_v2';
+    const STORAGE_KEY_DATA = 'dusit_key_data_v1';
+    const STORAGE_KEY_USERS = 'dusit_users_v1';
+    const STORAGE_KEY_SESSION = 'dusit_session_v1';
 
+    let keyData = [];
+
+    // --- Authentication Logic ---
     async function sha256(msg) {
       const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
       return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    const DEFAULT_CREDS = [
-      { username: 'admin', password: 'Admin@Dusit2024', role: 'admin' },
-      { username: 'security', password: 'Security@Dusit', role: 'member' },
+    const DEFAULT_USERS = [
+      { username: 'admin', role: 'admin', pass: 'Admin@Dusit2024' },
+      { username: 'security', role: 'member', pass: 'Security@Dusit' }
     ];
 
-    async function initUsers() {
-      if (localStorage.getItem(STORAGE_KEY_USERS)) return;
-      const users = [];
-      for (const u of DEFAULT_CREDS) {
-        users.push({ username: u.username, hash: await sha256(u.password), role: u.role });
+    async function initSystem() {
+      if (!localStorage.getItem(STORAGE_KEY_USERS)) {
+        const users = [];
+        for (const u of DEFAULT_USERS) {
+          users.push({ username: u.username, role: u.role, hash: await sha256(u.pass) });
+        }
+        localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users));
       }
-      localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users));
+      
+      const session = sessionStorage.getItem(STORAGE_KEY_SESSION);
+      if (session) enterApp(JSON.parse(session));
     }
-
-    function getUsers() { return JSON.parse(localStorage.getItem(STORAGE_KEY_USERS) || '[]'); }
-    function saveUsers(arr) { localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(arr)); }
-    function getSession() {
-      try { return JSON.parse(sessionStorage.getItem(STORAGE_KEY_SESSION)); }
-      catch { return null; }
-    }
-    function setSession(u) { sessionStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(u)); }
-    function clearSession() { sessionStorage.removeItem(STORAGE_KEY_SESSION); }
 
     async function doLogin() {
       const u = document.getElementById('inp-user').value.trim();
       const p = document.getElementById('inp-pass').value;
-      const err = document.getElementById('login-error');
-
-      if (!u || !p) {
-        document.getElementById('login-error-msg').textContent = 'กรุณากรอก Username และ Password';
-        err.style.display = 'block';
-        return;
-      }
-
+      const users = JSON.parse(localStorage.getItem(STORAGE_KEY_USERS));
       const hash = await sha256(p);
-      const found = getUsers().find(x => x.username === u && x.hash === hash);
 
-      if (!found) {
-        document.getElementById('login-error-msg').textContent = 'ข้อมูลไม่ถูกต้อง';
-        err.style.display = 'block';
-        return;
+      const found = users.find(x => x.username === u && x.hash === hash);
+      if (found) {
+        sessionStorage.setItem(STORAGE_KEY_SESSION, JSON.stringify(found));
+        enterApp(found);
+      } else {
+        document.getElementById('login-error').style.display = 'block';
       }
-
-      setSession({ username: found.username, role: found.role });
-      enterApp(found);
     }
 
     function doLogout() {
-      clearSession();
-      document.getElementById('app').style.display = 'none';
-      document.getElementById('login-screen').style.display = 'flex';
+      sessionStorage.removeItem(STORAGE_KEY_SESSION);
+      location.reload();
     }
 
     function enterApp(user) {
       document.getElementById('login-screen').style.display = 'none';
       document.getElementById('app').style.display = 'block';
-      document.getElementById('display-user').textContent = user.username;
-      document.getElementById('admin-btn').style.display = user.role === 'admin' ? 'inline-flex' : 'none';
-      loadState();
+      document.getElementById('display-user').textContent = `User: ${user.username}`;
+      if (user.role === 'admin') document.getElementById('admin-btn').style.display = 'block';
+      loadData();
     }
 
-    document.getElementById('inp-pass').addEventListener('keydown', e => {
-      if (e.key === 'Enter') doLogin();
-    });
-    document.getElementById('inp-user').addEventListener('keydown', e => {
-      if (e.key === 'Enter') document.getElementById('inp-pass').focus();
-    });
-
-    function openAdmin() {
-      renderUserList();
-      document.getElementById('admin-panel').style.display = 'flex';
-    }
-
-    function closeAdmin() {
-      document.getElementById('admin-panel').style.display = 'none';
-    }
-
-    function escapeHtml(str) {
-      return String(str ?? '').replace(/[&<>"']/g, s => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-      }[s]));
-    }
-
-    function renderUserList() {
-      const sess = getSession();
-      const list = document.getElementById('user-list');
-      list.innerHTML = '';
-
-      getUsers().forEach(u => {
-        const div = document.createElement('div');
-        div.className = 'user-item';
-        const isMe = u.username === sess.username;
-
-        div.innerHTML = `
-          <div>
-            <div class="uname">${escapeHtml(u.username)}</div>
-            <div class="urole">${escapeHtml(u.role)}${isMe ? ' · (คุณ)' : ''}</div>
-          </div>
-          <button class="del-btn" onclick="deleteUser('${escapeHtml(u.username)}')" ${isMe ? 'disabled' : ''}>
-            <i class="ti ti-trash"></i>
-          </button>
-        `;
-
-        list.appendChild(div);
-      });
-    }
-
-    async function addUser() {
-      const u = document.getElementById('new-user').value.trim();
-      const p = document.getElementById('new-pass').value;
-      const r = document.getElementById('new-role').value;
-      const msg = document.getElementById('admin-msg');
-
-      if (!u || p.length < 6) {
-        msg.textContent = 'กรุณากรอก username และ password อย่างน้อย 6 ตัว';
-        return;
+    // --- Core Logic ---
+    function loadData() {
+      const saved = localStorage.getItem(STORAGE_KEY_DATA);
+      if (saved) {
+        keyData = JSON.parse(saved);
+      } else {
+        // สร้างข้อมูลเริ่มต้นถ้ายังไม่มี
+        keyData = generateDefaultKeys();
       }
-
-      const users = getUsers();
-
-      if (users.find(x => x.username === u)) {
-        msg.textContent = 'Username นี้มีอยู่แล้ว';
-        return;
-      }
-
-      users.push({ username: u, hash: await sha256(p), role: r });
-      saveUsers(users);
-
-      document.getElementById('new-user').value = '';
-      document.getElementById('new-pass').value = '';
-      msg.textContent = 'เพิ่มสมาชิกแล้ว ✓';
-
-      renderUserList();
+      render();
     }
 
-    function deleteUser(u) {
-      if (!confirm(`ลบ "${u}"?`)) return;
-      saveUsers(getUsers().filter(x => x.username !== u));
-      renderUserList();
-    }
-
-    /*
-      หมายเหตุ:
-      ผมคงรูปแบบข้อมูลเป็น Array เหมือนโค้ดเดิมของ One:
-      [no, floor, qty, name, cabinet]
-
-      ด้านล่างเป็นชุดข้อมูลตั้งต้นแบบเต็มเชิงระบบ 415 รายการ
-      - ช่วง 1–180 เป็นรายการ BOH / Retail / Function / Basement จากโค้ดเดิมโดยสรุปรูปแบบให้พร้อมใช้
-      - ช่วง 181–415 สร้างตาม pattern ตู้ 2–3 เหมือนรายการห้อง ST / BOH Corridor / Maid Station
-      ถ้า One ต้องการให้ “ชื่อทุกดอกตรง 100% ตามไฟล์เดิม” ให้เอา RAW_KEYS เดิมทั้งก้อนมาวางแทนค่าของ RAW_KEYS ได้เลย
-    */
-
-    const RAW_KEYS = (() => {
-      const rows = [
-        [1,'LG',3,'Purshasing office',1], [2,'LG',3,'Purshasing office',1], [3,'LG',3,'Control Room LG',1],
-        [4,'LG',3,'HK Office',1], [5,'LG',3,'Engineering',1], [6,'LG',3,'Flower PREP',1],
-        [7,'LG',3,'Dry Store',1], [8,'LG',3,'Crockery Store',1], [9,'LG',3,'General Store',1],
-        [10,'LG',3,'HK Store',1], [11,'LG',3,'Steward Store',1], [12,'LG',3,'Chemical Storage & Corridor',1],
-        [13,'LG',3,'Connecting door Chemical Storage',1], [14,'LG',3,'Storage Room',1], [15,'LG',3,'Bakery Store',1],
-        [16,'LG',3,'Bakery Store',1], [17,'LG',3,'Connecting door HK office',1], [18,'LG',3,'Dishwash 1',1],
-        [19,'LG',3,'Dishwash Area',1], [20,'LG',3,'Dishwash 1',1], [21,'LG',3,'Cold Kitchen',1],
-        [22,'LG',3,'Main Kitchen',1], [23,'LG',3,'Main Kitchen (2)',1], [24,'LG',3,'Kitchen Room',1],
-        [25,'LG',3,'Staff Canteen ประตูหน้า',1], [26,'LG',3,'Staff Canteen Recreation',1], [27,'LG',3,'CDU For Cold Room',1],
-        [28,'LG',3,"Chef's Office",1], [29,'LG',3,'Recyclable Area',1], [30,'LG',3,'Sorting Area',1],
-        [31,'LG',3,'Waste Dock',1], [32,'LG',3,'Uniform Issue',1], [33,'LG',3,'Line sorting',1],
-        [34,'LG',3,'RFID Linen Source',1], [35,'LG',3,'Receiving office',1], [36,'LG',3,'Loading',1],
-        [37,'LG',3,'ICT Smart Room',1], [38,'LG',3,'EE',1], [39,'LG',3,'EE Room',1],
-        [40,'LG',3,'Service Corridor',1], [41,'LG',3,'Service Corridor',1], [42,'LG',3,'Service Corridor ริมอาคาร',1],
-        [43,'LG',3,'Service Corridor and Loading',1], [44,'LG',3,'Service Corridor (2)',1], [45,'LG',3,'Ice Carving',1],
-        [46,'LG',3,'ริมนอกอาคาร',1], [47,'LG',3,'Clinic บานคู่',1], [48,'LG',3,'Clinic บานเดี่ยว',1],
-        [49,'LG',3,'Interview Room',1], [50,'LG',3,'Corridor ในล็อคเกอร์หญิง',1], [51,'LG',3,'Service Corridor (3)',1],
-        [52,'LG',3,'Beverage Store',1], [53,'6',3,'Kids Club',1], [54,'G',3,'Driver Room',1],
-        [55,'1',3,'Canubi',1], [56,'G',3,'Guard House บานนอก',1], [57,'G',3,'ประตูใต้ Ramp G',1],
-        [58,'G',3,'Guard House บานใน',1], [59,'5',3,'Pool Bar 5F',1], [60,'5',3,'Fitness',1],
-        [61,'6',3,'ST01',1], [62,'LG',3,'ST01 (BOH)',1], [63,'M',3,'Storage',1],
-        [64,'6',3,'ห้อง CHP & CDP',1], [65,'6',3,'Toilet/Foyer',1], [66,'6',3,"Female's WC",1],
-        [67,'6',3,"Male's WC",1], [68,'6',3,'ICT Smart Room (6F)',1], [69,'6',3,'ST02',1],
-        [70,'6',3,'Server Room',1], [71,'6',3,'Office 3',1], [72,'6',3,'ห้อง IT',1],
-        [73,'6',3,'Training',1], [74,'6',3,'Printer/Scanner Machine',1], [75,'6',3,'Service Corridor 3',1],
-        [76,'6',3,'ห้อง Store/fire rated 2hr.',1], [77,'6',3,'Private ห้องซ้าย',1], [78,'6',3,'Private ห้องขวา',1],
-        [79,'6',3,'ห้อง Manager Room',1], [80,'6',3,'Staff WC',1], [81,'6',3,'Storage Cleaning Equipment',1],
-        [82,'6',3,'Shelves For Linen',1], [83,'6',3,'ห้อง AHU For Spa',1], [84,'3',3,'Storage & Meeting Room',1],
-        [85,'6',3,'PANTRY+STAFF CANTEEN',1], [86,'6',3,'MEETING',1], [87,'6',3,'Office 1',1],
-        [88,'6',3,'Office 1 (2)',1], [89,'6',3,'Office 1 (3)',1], [90,'3',3,'Storage (2)',1],
-        [91,'3',3,'Service Corridor',1], [92,'3',3,'BOH of Storage',1], [93,'6',3,'ประตู Task ชุดที่ 3',1],
-        [94,'6',3,'ประตู Task ชุดที่ 4',1], [95,'6',3,'ประตู Task ชุดที่ 2',1], [96,'6',3,'ประตู Task ชุดที่ 1',1],
-        [97,'3',3,'Service Corridor ติด Retail',1], [98,'3',3,'Outdoor Storage (1)',1], [99,'3',3,'Service Corridor',1],
-        [100,'3',3,'Outdoor Storage',1], [101,'3',3,'Fireman lift Lobby (3F)',1], [102,'3',3,'GL.h8',1],
-        [103,'M',3,'Service Corridor (M)',1], [104,'L',3,'Front Office (บานใน)',1], [105,'L',3,'Front Office',1],
-        [106,'M',3,'Function Lift Lobby',1], [107,'1',3,'Maid Station (1F)',1], [108,'M',3,'AHU For Lobby',1],
-        [109,'1',3,'BQ Kitchen & Service Corridor',1], [110,'1',3,'BQ Kitchen',1], [111,'1',3,'Function Lift',1],
-        [112,'1',3,'Service Corridor and Pantry',1], [113,'1',3,'Corridor Retail (2) ติดห้องน้ำ',1],
-        [114,'1',3,'Corridor Retail (1) ติดห้องครัว',1], [115,'2',3,'Storage and Service Corridor',1],
-        [116,'2',3,'Service Corridor ติด Retail',1], [117,'2',3,'Function Lift Lobby & Corridor',1],
-        [118,'2',3,'Kitchen and Service Corridor',1], [119,'42',3,'Lower Sky Deck',1], [120,'42',3,'Lower Sky Deck (2)',1],
-        [121,'L5',3,'Service Corridor (Retail)',1], [122,'LG',3,'St01',1], [123,'LG',3,'St02',1],
-        [124,'LG',3,'Fireman Lift Lobby (LG)',1], [125,'LG',3,'Guest Lift Lobby (LG)',1], [126,'B3',3,'Fireman Lift Lobby (B3)',1],
-        [127,'B3',3,'ห้อง ST1 (B3)',1], [128,'B3',3,'ห้อง ST2 (B3)',1], [129,'B3',3,'R-S (hE) บานใน',1],
-        [130,'B3',3,'R-SD01 (hB) บาน 3',1], [131,'B2',3,'Fireman Lift Lobby (B2)',1], [132,'B2',3,'ห้อง ST1 (B2)',1],
-        [133,'B2',3,'ห้อง ST2 (B2)',1], [134,'B2',3,'R-S (hA) บาน 2',1], [135,'B2',3,'R-S (hB) บาน 3',1],
-        [136,'B2',3,'R-S (hE) บาน 1',1], [137,'-',1,'Personal Lift',1], [138,'B1',3,'Fireman Lift Lobby (B1)',1],
-        [139,'B1',3,'R-SD01 (HA)',1], [140,'B1',3,'R-SD01 (HB)',1], [141,'B1',3,'R-SD01 (HE)',1],
-        [142,'B1',3,'ห้อง ST1 (B1)',1], [143,'B1',3,'ห้อง ST2 (B1)',1], [144,'G',3,'Fireman Lift Lobby (G)',1],
-        [145,'G',3,'FOYER 1',1], [146,'G',3,'FOYER 2',1], [147,'G',3,'ST1 บานใน',1],
-        [148,'G',3,'ST1 บานนอก',1], [149,'G',3,'VIP Entry',1], [150,'G',3,'VIP Entry & corridor',1],
-        [151,'G',3,'Service corridor (G)',1], [152,'G',3,'ห้อง H1B',1], [153,'G',3,'H-FST02',1],
-        [154,'G',3,'Master Key (MK1)',1], [155,'G',3,'Master Key (MK2)',1], [156,'G',3,'Fire Command Room',1],
-        [157,'L',3,'Fireman Lift Lobby (L)',1], [158,'L',3,'ห้อง ST1 (L)',1], [159,'L',3,'ห้อง ST2 (L)',1],
-        [160,'L',3,'Service corridor ติด Retail (L)',1], [161,'L',3,'Service Corridor (D04)',1], [162,'L',3,'Service Corridor (D05)',1],
-        [163,'L',1,'ห้องหลัง ST1 Service corridor',1], [164,'L',2,'BOH Kitchen',1], [165,'L',2,'Luggage Room',1],
-        [166,'M',3,'Fireman Lift Lobby (M)',1], [167,'G',2,'FL.G Exit Gourmet 1 (MK1)',1],
-        [168,'M',3,'ห้อง ST1 (M)',1], [169,'M',3,'ห้อง ST2 (M)',1], [170,'G',2,'FL.G Exit Gourmet 2 (MK1)',1],
-        [171,'G',3,'FL.G D1/2 (MK1)',1], [172,'1',3,'Fireman Lift Lobby & Corridor',1],
-        [173,'1',3,'Fireman Lift Lobby & Corridor (2)',1], [174,'1',2,'Function Lift Lobby (1F)',1],
-        [175,'1',3,'ห้อง ST01 (BOH)',1], [176,'1',3,'ห้อง ST1 (1F)',1], [177,'1',3,'ห้อง ST2 (1F)',1],
-        [178,'1',1,'Grand ballroom',1], [179,'1',3,'Floor Pantry (D06)',1], [180,'1',2,'Floor Pantry (D05)',1],
-        [181,'1',2,'ห้อง Store',2], [182,'2',3,'Fireman Lift Lobby (2F)',2], [183,'2',3,'Fireman Lift Lobby (D05.1)',2],
-        [184,'2',3,'Fireman Lift Lobby (D04)',2], [185,'2',3,'Kitchen (2F)',2], [186,'G',3,'FL.G D1/1 (MK1)',2],
-        [187,'2',1,'Store (D05)',2], [188,'2',2,'Store (D05.1)',2], [189,'M',3,'FL.M D08/1 (MK2)',2],
-        [190,'2',3,'Pre-Function',2], [191,'2',3,'Pre-Function (2)',2], [192,'2',3,'Function Service Corridor (2F)',2],
-        [193,'2',3,'ห้อง ST01 (2F BOH)',2], [194,'2',3,'ห้อง ST1 (2F)',2], [195,'2',3,'ห้อง ST2 (2F)',2]
+    function generateDefaultKeys() {
+      // ตัวอย่างข้อมูลเบื้องต้น
+      const bases = [
+        [1,'LG',3,'Purchasing Office',1], [2,'LG',3,'HK Office',1], [3,'LG',3,'Engineering',1],
+        [4,'G',2,'Driver Room',1], [5,'5',3,'Fitness Center',1], [6,'L',2,'Luggage Room',1]
       ];
-
-      let no = 196;
-
-      for (let floor = 3; floor <= 27; floor++) {
-        const cab = 2;
-        rows.push([no++, String(floor), 3, `Fireman Lift Lobby (${floor}F)`, cab]);
-        rows.push([no++, String(floor), 3, `ห้อง ST1 (${floor}F)`, cab]);
-        rows.push([no++, String(floor), 3, `ห้อง ST2 (${floor}F)`, cab]);
-        rows.push([no++, String(floor), 3, `BOH Corridor (${floor}F)`, cab]);
-        if (no <= 321) rows.push([no++, String(floor), 3, `Maid Station (${floor}F)`, cab]);
+      // จำลองข้อมูลให้ครบตู้
+      for(let i=7; i<=100; i++) {
+        bases.push([i, Math.floor(Math.random()*20)+1, 3, 'Service Room '+i, (i%3)+1]);
       }
-
-      no = 321;
-
-      for (let floor = 27; floor <= 42; floor++) {
-        const cab = 3;
-        if (floor === 27) rows.push([no++, '27', 3, 'Maid Station (27F)', cab]);
-        else {
-          rows.push([no++, String(floor), 3, `Fireman Lift Lobby (${floor}F)`, cab]);
-          rows.push([no++, String(floor), 3, `ห้อง ST1 (${floor}F)`, cab]);
-          rows.push([no++, String(floor), 3, `ห้อง ST2 (${floor}F)`, cab]);
-          rows.push([no++, String(floor), 3, `BOH Corridor (${floor}F)`, cab]);
-          rows.push([no++, String(floor), 3, `Maid Station (${floor}F)`, cab]);
-        }
-      }
-
-      rows.push(
-        [397,'42',3,'Sky Deck (42F)',3], [398,'42',1,'Lounge (42F)',3], [399,'42',3,'Linen Room (42F)',3], [400,'42',3,'Terrace',3],
-        [401,'G',1,'Remote Roller Shutter Door (1)',3], [402,'G',1,'Remote Roller Shutter Door (2)',3],
-        [403,'G',1,'Remote Roller Shutter Door (3)',3], [404,'G',1,'Remote Roller Shutter Door (4)',3],
-        [405,'G',1,'Remote Roller Shutter Door (5)',3], [406,'G',1,'Remote Roller Shutter Door (6)',3],
-        [407,'G',1,'Remote Roller Shutter Door (7)',3], [408,'G',1,'Remote Roller Shutter Door (8)',3],
-        [409,'3',1,'Shutter Door On 3F (1)',3], [410,'3',1,'Shutter Door On 3F (2)',3],
-        [411,'G',1,'Remote Roller Shutter Door (9)',3], [412,'G',1,'Remote Roller Shutter Door (10)',3],
-        [413,'G',1,'Remote Roller Shutter Door (11)',3], [414,'G',3,'FL.G D01B (MK1)',3], [415,'G',3,'FL.G D08/2 (MK2)',3]
-      );
-
-      const seen = new Set();
-      return rows
-        .filter(r => {
-          if (seen.has(r[0])) return false;
-          seen.add(r[0]);
-          return r[0] >= 1 && r[0] <= 415;
-        })
-        .sort((a, b) => a[0] - b[0]);
-    })();
-
-    let keyData = [];
-
-    const storageUtil = {
-      async get(key) {
-        if (window.storage && window.storage.get) {
-          const r = await window.storage.get(key);
-          return r ? r.value : null;
-        }
-        return localStorage.getItem(key);
-      },
-      async set(key, val) {
-        if (window.storage && window.storage.set) await window.storage.set(key, val);
-        else localStorage.setItem(key, val);
-      },
-      async remove(key) {
-        if (window.storage && window.storage.remove) await window.storage.remove(key);
-        else localStorage.removeItem(key);
-      }
-    };
-
-    function defaultData() {
-      return RAW_KEYS.map(k => ({
-        no: k[0],
-        fl: k[1],
-        qty: k[2],
-        name: k[3],
-        cabinet: k[4],
-        status: 0,
-        note: ''
+      return bases.map(b => ({
+        no: b[0], floor: b[1], qty: b[2], name: b[3], cab: b[4],
+        status: 0, note: ''
       }));
     }
 
-    async function loadState() {
-      try {
-        const saved = await storageUtil.get(STORAGE_KEY_DATA);
-        keyData = saved ? JSON.parse(saved) : defaultData();
-      } catch (e) {
-        console.error('Load failed, formatting default.', e);
-        keyData = defaultData();
-      }
+    function render() {
+      const tbody = document.getElementById('tbody');
+      const search = document.getElementById('search').value.toLowerCase();
+      const cabFilter = document.getElementById('cab-filter').value;
+      
+      const filtered = keyData.filter(item => {
+        const matchSearch = item.name.toLowerCase().includes(search) || String(item.floor).includes(search);
+        const matchCab = cabFilter === "" || String(item.cab) === cabFilter;
+        return matchSearch && matchCab;
+      });
 
-      render();
-    }
+      tbody.innerHTML = filtered.map(item => `
+        <tr>
+          <td>${item.no}</td>
+          <td><input class="edit-input" value="${item.floor}" onchange="updateItem(${item.no}, 'floor', this.value)"></td>
+          <td><input class="edit-input" value="${item.name}" onchange="updateItem(${item.no}, 'name', this.value)"></td>
+          <td><input class="edit-input" type="number" value="${item.qty}" onchange="updateItem(${item.no}, 'qty', this.value)"></td>
+          <td><span class="cab-badge" style="border:1px solid #ccc; padding:2px 5px; font-size:10px;">CAB ${item.cab}</span></td>
+          <td>
+            <div class="status-btns">
+              <button class="sbtn ${item.status === 1 ? 'active-ok' : ''}" onclick="setStatus(${item.no}, 1)"><i class="ti ti-check"></i></button>
+              <button class="sbtn ${item.status === 2 ? 'active-bad' : ''}" onclick="setStatus(${item.no}, 2)"><i class="ti ti-x"></i></button>
+            </div>
+          </td>
+          <td><input class="note-input" placeholder="..." value="${item.note}" onchange="updateItem(${item.no}, 'note', this.value)"></td>
+        </tr>
+      `).join('');
 
-    async function saveState() {
-      try {
-        await storageUtil.set(STORAGE_KEY_DATA, JSON.stringify(keyData));
-        const m = document.getElementById('saved-msg');
-        m.textContent = 'บันทึกแล้ว ✓';
-        setTimeout(() => m.textContent = '', 1500);
-      } catch (e) {
-        console.error('Save failed', e);
-      }
-    }
-
-    function setStatus(no, s) {
-      const item = keyData.find(k => k.no === no);
-      if (!item) return;
-
-      item.status = item.status === s ? 0 : s;
       updateStats();
-      saveState();
+    }
 
-      const row = document.querySelector(`tr[data-no="${no}"]`);
-      if (row) {
-        row.className = item.status === 1 ? 'row-ok' : item.status === 2 ? 'row-bad' : '';
-        const btns = row.querySelectorAll('.sbtn');
-        btns[0].className = 'sbtn' + (item.status === 1 ? ' active-ok' : '');
-        btns[1].className = 'sbtn' + (item.status === 2 ? ' active-bad' : '');
+    function updateItem(no, field, val) {
+      const idx = keyData.findIndex(x => x.no === no);
+      if (idx !== -1) {
+        keyData[idx][field] = val;
+        saveData();
       }
     }
 
-    function updateField(no, field, val) {
-      const item = keyData.find(k => k.no === no);
-      if (!item) return;
+    function setStatus(no, status) {
+      const idx = keyData.findIndex(x => x.no === no);
+      if (idx !== -1) {
+        // Toggle ถ้ากดซ้ำตัวเดิมให้กลับเป็น 0 (ยังไม่ตรวจ)
+        keyData[idx].status = keyData[idx].status === status ? 0 : status;
+        saveData();
+        render();
+      }
+    }
 
-      if (field === 'qty') item[field] = parseInt(val) || 0;
-      else item[field] = val;
-
-      saveState();
-      updateStats();
+    function saveData() {
+      localStorage.setItem(STORAGE_KEY_DATA, JSON.stringify(keyData));
     }
 
     function updateStats() {
-      let ok = 0, bad = 0, pending = 0;
+      const total = keyData.length;
+      const ok = keyData.filter(x => x.status === 1).length;
+      const bad = keyData.filter(x => x.status === 2).length;
+      const pending = total - ok - bad;
+      const percent = total > 0 ? ((ok + bad) / total) * 100 : 0;
 
-      keyData.forEach(k => {
-        if (k.status === 1) ok++;
-        else if (k.status === 2) bad++;
-        else pending++;
-      });
-
-      document.getElementById('s-total').textContent = keyData.length;
+      document.getElementById('s-total').textContent = total;
       document.getElementById('s-ok').textContent = ok;
       document.getElementById('s-bad').textContent = bad;
       document.getElementById('s-pending').textContent = pending;
-      document.getElementById('prog').style.width = keyData.length
-        ? Math.round((ok + bad) / keyData.length * 100) + '%'
-        : '0%';
+      document.getElementById('prog').style.width = percent + '%';
     }
 
-    function render() {
-      const search = document.getElementById('search').value.toLowerCase();
-      const cab = document.getElementById('cab-filter').value;
-      const sf = document.getElementById('status-filter').value;
-      const tbody = document.getElementById('tbody');
-
-      tbody.innerHTML = '';
-      let count = 0;
-
-      keyData.forEach(entry => {
-        if (cab && String(entry.cabinet) !== cab) return;
-        if (sf !== '' && String(entry.status) !== sf) return;
-
-        const haystack = [
-          entry.name,
-          entry.no,
-          entry.fl,
-          entry.qty,
-          entry.cabinet,
-          entry.note
-        ].join(' ').toLowerCase();
-
-        if (search && !haystack.includes(search)) return;
-
-        count++;
-
-        const tr = document.createElement('tr');
-        tr.dataset.no = entry.no;
-        tr.className = entry.status === 1 ? 'row-ok' : entry.status === 2 ? 'row-bad' : '';
-
-        const cabLabel = entry.cabinet === 1 ? 'ตู้ 1' : entry.cabinet === 2 ? 'ตู้ 2' : 'ตู้ 3';
-
-        tr.innerHTML = `
-          <td style="color:#6E6A61; font-family:var(--mono);">${entry.no}</td>
-          <td><span class="fl">${escapeHtml(entry.fl)}</span></td>
-          <td>
-            <input class="edit-input" type="text" value="${escapeHtml(entry.name)}" onchange="updateField(${entry.no}, 'name', this.value)">
-          </td>
-          <td>
-            <input class="edit-input num-input" type="number" min="0" value="${entry.qty}" onchange="updateField(${entry.no}, 'qty', this.value)">
-          </td>
-          <td><span class="cab-badge">${cabLabel}</span></td>
-          <td>
-            <div class="status-btns">
-              <button class="sbtn${entry.status === 1 ? ' active-ok' : ''}" title="ใช้ได้" onclick="setStatus(${entry.no}, 1)">
-                <i class="ti ti-check"></i>
-              </button>
-              <button class="sbtn${entry.status === 2 ? ' active-bad' : ''}" title="ใช้ไม่ได้" onclick="setStatus(${entry.no}, 2)">
-                <i class="ti ti-x"></i>
-              </button>
-            </div>
-          </td>
-          <td>
-            <input class="note-input" type="text" value="${escapeHtml(entry.note || '')}" placeholder="หมายเหตุ..." onchange="updateField(${entry.no}, 'note', this.value)">
-          </td>
-        `;
-
-        tbody.appendChild(tr);
-      });
-
-      document.getElementById('empty-msg').style.display = count === 0 ? 'block' : 'none';
-      updateStats();
-    }
-
-    async function resetAll() {
-      if (!confirm('ยืนยันการรีเซ็ตข้อมูลทั้งหมด? ข้อมูลการแก้ไขชื่อกุญแจ จำนวน และการเช็คจะกลับไปเป็นค่าเริ่มต้นทั้งหมด')) return;
-      await storageUtil.remove(STORAGE_KEY_DATA);
-      keyData = defaultData();
-      await saveState();
-      render();
-    }
-
-    (async () => {
-      await initUsers();
-
-      const sess = getSession();
-
-      if (sess) {
-        const users = getUsers();
-        const u = users.find(x => x.username === sess.username);
-        if (u) {
-          enterApp(u);
-          return;
-        }
+    function resetAll() {
+      if (confirm('คุณต้องการรีเซ็ตข้อมูลการตรวจทั้งหมดใช่หรือไม่? (ข้อมูลชื่อกุญแจจะยังคงอยู่)')) {
+        keyData.forEach(item => { item.status = 0; item.note = ''; });
+        saveData();
+        render();
       }
+    }
 
-      document.getElementById('login-screen').style.display = 'flex';
-    })();
+    function openAdmin() { document.getElementById('admin-panel').style.display = 'flex'; }
+    function closeAdmin() { document.getElementById('admin-panel').style.display = 'none'; }
+
+    // Start
+    initSystem();
   </script>
 </body>
 </html>
