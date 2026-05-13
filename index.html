@@ -20,63 +20,40 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--sans); background: var(--paper); color: var(--ink); }
 
-    /* Login Screen */
     #login-screen { position: fixed; inset: 0; background: var(--paper); display: flex; align-items: center; justify-content: center; z-index: 9999; }
     .login-box { width: 350px; background: var(--paper2); border: 1px solid var(--line); padding: 30px; box-shadow: 10px 10px 0 rgba(0,0,0,0.1); }
     .login-box h1 { font-family: var(--serif); margin-bottom: 20px; border-bottom: 2px solid var(--line); padding-bottom: 10px; }
     .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid var(--line); font-family: var(--mono); }
     .login-btn { width: 100%; padding: 12px; background: var(--ink); color: #fff; border: none; cursor: pointer; font-weight: 600; }
 
-    /* App Layout */
     #app { display: none; padding: 20px; }
     .header { margin-bottom: 30px; border-bottom: 1px solid var(--line); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .header h2 { font-family: var(--serif); font-size: 42px; }
+    .header h2 { font-family: var(--serif); font-size: 32px; }
 
-    /* Stats */
     .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); background: var(--paper2); margin-bottom: 20px; }
     .stat-item { padding: 15px; border-right: 1px solid var(--line); text-align: center; }
     .stat-item:last-child { border-right: none; }
     .stat-num { font-size: 32px; font-family: var(--serif); font-weight: 700; display: block; }
     .stat-label { font-size: 11px; font-family: var(--mono); text-transform: uppercase; color: var(--muted); }
 
-    /* Controls */
     .controls { display: flex; gap: 10px; margin-bottom: 20px; }
     .search-input { flex: 1; padding: 10px; border: 1px solid var(--line); background: var(--paper2); }
     .filter-select { padding: 10px; border: 1px solid var(--line); background: var(--paper2); }
 
-    /* Table Fixing the Distortion */
-    .table-container { 
-      background: var(--paper2); 
-      border: 1px solid var(--line); 
-      overflow-y: auto; 
-      max-height: 70vh; 
-    }
+    .table-container { background: var(--paper2); border: 1px solid var(--line); overflow-y: auto; max-height: 65vh; }
     table { width: 100%; border-collapse: collapse; min-width: 800px; }
-    thead th { 
-      position: sticky; top: 0; background: var(--paper2); 
-      border-bottom: 3px double var(--line); padding: 12px; 
-      text-align: left; font-size: 12px; font-family: var(--mono); z-index: 10;
-    }
+    thead th { position: sticky; top: 0; background: var(--paper2); border-bottom: 3px double var(--line); padding: 12px; text-align: left; font-size: 12px; font-family: var(--mono); z-index: 10; }
     tbody td { padding: 10px 12px; border-bottom: 1px solid var(--soft-line); font-size: 14px; }
     
-    /* ลบ CSS ที่ทำให้เกิด Label ซ้อน (Ghost Header) */
-    td::before { display: none !important; } 
-
     .col-no { width: 60px; color: var(--muted); font-family: var(--mono); }
     .col-fl { width: 80px; font-weight: 600; text-align: center; }
-    .col-name { width: auto; }
     .col-cab { width: 100px; text-align: center; }
-    .col-status { width: 120px; }
-    .col-note { width: 200px; }
-
     .badge { border: 1px solid var(--line); padding: 2px 6px; font-size: 11px; font-family: var(--mono); }
     .status-btns { display: flex; gap: 5px; }
     .s-btn { width: 32px; height: 32px; border: 1px solid var(--soft-line); background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .s-btn.ok.active { background: var(--ok); color: #fff; border-color: var(--ok); }
     .s-btn.err.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-    
-    .note-box { width: 100%; border: none; background: transparent; font-size: 13px; outline: none; border-bottom: 1px solid transparent; }
-    .note-box:focus { border-bottom-color: var(--soft-line); }
+    .note-box { width: 100%; border: none; background: transparent; font-size: 13px; outline: none; }
 
     @media print { .controls, .login-btn, #login-screen { display: none; } }
   </style>
@@ -94,26 +71,25 @@
   <div id="app">
     <div class="header">
       <div>
-        <h2>Daily Key Checklist</h2>
-        <p style="color:var(--muted)">Security Control Inventory (415 Items)</p>
+        <h2>Physical Key Checklist</h2>
+        <p style="color:var(--muted)">Security Control Inventory (Cabinet 1 & 2)</p>
       </div>
       <button onclick="location.reload()" style="background:none; border:1px solid var(--line); padding:5px 10px; cursor:pointer;">ออกจากระบบ</button>
     </div>
 
     <div class="stats-bar">
-      <div class="stat-item"><span class="stat-num" id="t-total">415</span><span class="stat-label">ทั้งหมด</span></div>
+      <div class="stat-item"><span class="stat-num" id="t-total">0</span><span class="stat-label">ทั้งหมด</span></div>
       <div class="stat-item"><span class="stat-num" id="t-ok" style="color:var(--ok)">0</span><span class="stat-label">ปกติ</span></div>
       <div class="stat-item"><span class="stat-num" id="t-err" style="color:var(--accent)">0</span><span class="stat-label">พบปัญหา</span></div>
-      <div class="stat-item"><span class="stat-num" id="t-wait" style="color:#9A6A16">415</span><span class="stat-label">ยังไม่ตรวจ</span></div>
+      <div class="stat-item"><span class="stat-num" id="t-wait" style="color:#9A6A16">0</span><span class="stat-label">ยังไม่ตรวจ</span></div>
     </div>
 
     <div class="controls">
-      <input type="text" id="search" class="search-input" placeholder="ค้นหา ชื่อกุญแจ (ผู้เบิก) หรือ ชั้น..." oninput="render()">
+      <input type="text" id="search" class="search-input" placeholder="ค้นหาชื่อกุญแจ หรือ ชั้น..." oninput="render()">
       <select id="f-cab" class="filter-select" onchange="render()">
         <option value="">ทุกตู้</option>
         <option value="1">ตู้ 1</option>
         <option value="2">ตู้ 2</option>
-        <option value="3">ตู้ 3</option>
       </select>
       <button onclick="resetAll()" style="padding:10px; background:white; border:1px solid var(--line); cursor:pointer;">รีเซ็ตค่าเริ่มต้น</button>
     </div>
@@ -124,10 +100,10 @@
           <tr>
             <th class="col-no">NO.</th>
             <th class="col-fl">ชั้น</th>
-            <th class="col-name">ชื่อกุญแจ (ผู้เบิก)</th>
+            <th>ชื่อกุญแจ</th>
             <th class="col-cab">ตู้</th>
-            <th class="col-status">สถานะ</th>
-            <th class="col-note">หมายเหตุ</th>
+            <th style="width:120px">สถานะ</th>
+            <th style="width:200px">หมายเหตุ</th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>
@@ -136,39 +112,30 @@
   </div>
 
   <script>
-    const KEY_DB = 'dusit_key_v4';
+    const KEY_DB = 'dusit_key_physical_v1';
     let keys = [];
 
-    // ดึงข้อมูลกุญแจจริงจากไฟล์ที่คุณส่งมา (คัดมาเฉพาะลำดับสำคัญและกลุ่มตู้)
     function loadRawData() {
-      const data = [];
-      // ตู้ 1: 1-160 (ตัวอย่างจากไฟล์ Key2023)
-      for(let i=1; i<=415; i++) {
-        let fl = "LG";
-        let name = "Item " + i;
-        let cab = (i <= 160) ? 1 : (i <= 320 ? 2 : 3);
+      const cabinet1 = [
+        [1,"LG","Purshasing office"],[2,"LG","Purshasing office"],[3,"LG","Control Room LG"],[4,"LG","HK Office"],[5,"LG","Engineering"],[6,"LG","Flower PREP"],[7,"LG","Dry Store"],[8,"LG","Crockery Store"],[9,"LG","General Store"],[10,"LG","HK Store"],
+        [11,"LG","Steward Store"],[12,"LG","Chemical Storage & Coridoor"],[13,"LG","Connect Chemical Storage"],[14,"LG","Storage Room"],[15,"LG","Bakery Store (บานคู่)"],[16,"LG","Bakery Store (บานเดี๋ยว)"],[17,"LG","Connecting door HK office"],[18,"LG","Dishwash 1"],[19,"LG","Dishwash Area"],[20,"LG","Diswash 1"],
+        [21,"LG","Cold Kitchen"],[22,"LG","Main Kitchen"],[23,"LG","Main Kitchen "],[24,"LG","Kitchen Room"],[25,"LG","Staff Canteen ประตูหน้า"],[26,"LG","Staff Canteen (Recreation)"],[27,"LG","CDU For cold Room"],[28,"LG","Cheff's Office"],[29,"LG","Recycable Area"],[30,"LG","Sorting Area"],
+        [31,"LG","Waste Dock"],[32,"LG","Uniform Issue"],[33,"LG","Line sorting"],[34,"LG","RFID Linen Source"],[35,"LG","Receiving office"],[36,"LG","Loading"],[37,"LG","ICT Smart Room"],[38,"LG","EE"],[39,"LG","EE Room"],[40,"LG","Service Corridor "],
+        [41,"LG","Service Corridor (hF)"],[42,"LG","Service Corridor ริมอาคาร"],[43,"LG","Service Corridor and loading "],[44,"LG","Service Corridor "],[45,"LG","Ice Carving "],[46,"LG","ริมนอกอาคาร "],[47,"LG","Clinic บานคู่"],[48,"LG","Clinic บานเดี่ยว"],[49,"LG","Interview Room"],[50,"LG","Corridor ในล็อคเกอร์หญิง"],
+        [70,"6","Server Room"],[71,"6","Office 3"],[72,"6","ห้อง IT"],[73,"6","Training"],[74,"6","Printer/Scanner Machine"],[75,"6","Service Corridor 3"],[76,"6","ห้อง Store/fire rated 2hr."],[77,"6","Private ห้องซ้าย"],[78,"6","Private ห้องขวา"],[79,"6","ห้อง Manager Room"],
+        [121,"L5","Service Corridor (Retail)"],[122,"LG","St01"],[123,"LG","St02"],[124,"LG","Fireman Lift Lobby"],[125,"LG","ห้อง Guest Lift Lobby"],[126,"B3","Fireman Lift Lobby"],[127,"B3","ห้อง ST1"],[128,"B3","ห้อง ST2"],[129,"B3","ห้อง R-S (hE) บานใน"],[130,"B3","R-SD01 (hB) บาน 3"]
+      ];
 
-        // ใส่ข้อมูลจริงตามไฟล์ CSV ที่คุณส่งมา
-        if(i === 1) { fl = "LG"; name = "Purshasing office"; }
-        else if(i === 2) { fl = "LG"; name = "Purshasing office"; }
-        else if(i === 3) { fl = "LG"; name = "Control Room LG"; }
-        else if(i === 4) { fl = "LG"; name = "HK Office"; }
-        else if(i === 5) { fl = "LG"; name = "Engineering"; }
-        else if(i === 6) { fl = "LG"; name = "Flower PREP"; }
-        else if(i === 7) { fl = "LG"; name = "Dry Store"; }
-        else if(i === 8) { fl = "LG"; name = "Crockery Store"; }
-        else if(i === 9) { fl = "LG"; name = "General Store"; }
-        else if(i === 10) { fl = "LG"; name = "HK Store"; }
-        else if(i >= 11 && i <= 50) { fl = "LG"; name = "Key Location/Area " + i; }
-        else if(i >= 51 && i <= 80) { fl = "6"; name = "Office/Area " + i; }
-        else if(i >= 81 && i <= 120) { fl = "3"; name = "Service/Area " + i; }
-        else if(i >= 121 && i <= 160) { fl = "L5"; name = "Retail/Area " + i; }
-        else if(i >= 161 && i <= 320) { fl = "M/L"; name = "Back Office " + i; }
-        else { fl = "G"; name = "Main Entrance " + i; }
+      const cabinet2 = [
+        [181,"-","ห้อง Store"],[182,"-","Fireman Lift Lobby"],[183,"-","Fireman Lift Lobby (D05.1)"],[184,"-","Fireman Lift Lobby (D04)"],[185,"-","Kitchen"],[186,"G","FL.G D1/1 (MK1)"],[187,"-","Store (D05)"],[188,"-","Store (D05.1)"],[189,"M","FL.M D08/1 (MK2)"],[190,"-","Pre-Function"],
+        [191,"-","Floor Pantry"],[192,"M","FL.M D05 (MK2)"],[193,"-","ST01 (BOH)"],[194,"-","ST01"],[195,"-","ST02"],[196,"-","Fireman Lift Lobby & Prefunction"],[197,"-","Floor Pantry (H5)"],[198,"-","Floor Pantry (D06)"],[199,"-","Pump Room"],[200,"-","H-FST01"],
+        [206,"-","ห้อง SPA"],[207,"-","ห้อง Grand Room"],[209,"-","Master Key SPA (New)"],[210,"5","Fl.5 ทางเข้าสปา (ขวา)"],[211,"5","Fl.5 ทางเข้าสปา (ซ้าย)"],[212,"-","ห้องเก็บของสปา"],[221,"-","B2 ห้อง ST1"],[222,"-","B2 ห้อง ST2"]
+      ];
 
-        data.push({ no: i, fl: fl, name: name, cab: cab, status: 0, note: "" });
-      }
-      return data;
+      const finalData = [];
+      cabinet1.forEach(k => finalData.push({ no: k[0], fl: k[1], name: k[2], cab: 1, status: 0, note: "" }));
+      cabinet2.forEach(k => finalData.push({ no: k[0], fl: k[1], name: k[2], cab: 2, status: 0, note: "" }));
+      return finalData;
     }
 
     function login() {
@@ -200,17 +167,15 @@
         <tr>
           <td class="col-no">${k.no}</td>
           <td class="col-fl">${k.fl}</td>
-          <td class="col-name"><strong>${k.name}</strong></td>
+          <td><strong>${k.name}</strong></td>
           <td class="col-cab"><span class="badge">ตู้ ${k.cab}</span></td>
-          <td class="col-status">
+          <td>
             <div class="status-btns">
               <button class="s-btn ok ${k.status===1?'active':''}" onclick="setStatus(${k.no}, 1)"><i class="ti ti-check"></i></button>
               <button class="s-btn err ${k.status===2?'active':''}" onclick="setStatus(${k.no}, 2)"><i class="ti ti-x"></i></button>
             </div>
           </td>
-          <td class="col-note">
-            <input type="text" class="note-box" placeholder="หมายเหตุ..." value="${k.note}" onchange="setNote(${k.no}, this.value)">
-          </td>
+          <td><input type="text" class="note-box" placeholder="..." value="${k.note}" onchange="setNote(${k.no}, this.value)"></td>
         </tr>
       `).join('');
       updateStats();
@@ -231,11 +196,13 @@
     function save() { localStorage.setItem(KEY_DB, JSON.stringify(keys)); }
 
     function updateStats() {
+      const total = keys.length;
       const ok = keys.filter(x => x.status === 1).length;
       const err = keys.filter(x => x.status === 2).length;
+      document.getElementById('t-total').innerText = total;
       document.getElementById('t-ok').innerText = ok;
       document.getElementById('t-err').innerText = err;
-      document.getElementById('t-wait').innerText = 415 - (ok + err);
+      document.getElementById('t-wait').innerText = total - (ok + err);
     }
 
     function resetAll() {
