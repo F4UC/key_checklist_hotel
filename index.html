@@ -73,6 +73,13 @@
     .ctrl-btn.export{background:var(--ink);color:#fff;border-color:var(--ink);}
     .ctrl-btn.checkpoint{background:var(--warn);color:#fff;border-color:var(--warn);}
     .ctrl-btn.reset-st{background:var(--accent);color:#fff;border-color:var(--accent);}
+    <button class="ctrl-btn" onclick="loadFromCloud()">
+  <i class="ti ti-download"></i> โหลดล่าสุด
+</button>
+
+<button class="ctrl-btn export" onclick="saveToCloud()">
+  <i class="ti ti-upload"></i> บันทึกขึ้นระบบ
+</button>
 
     /* ─── TABLE ─── */
     .table-container{background:var(--paper2);border:1px solid var(--line);overflow-y:auto;max-height:60vh;overflow-x:auto;}
